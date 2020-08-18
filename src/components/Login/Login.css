@@ -1,0 +1,103 @@
+/*.BgImg{
+	background-image: url('../../../assets/bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100% !important;
+}*/
+
+.SubmitData{
+	width: 60%;
+	margin: 5px auto;
+	margin-left: 5px;
+	padding: 15px;
+	align-items: center;
+	border: none;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+	border-radius: 20px;
+	color: #fff;
+	background-image: linear-gradient(to right, navy , #4d4d4d);
+}
+
+.LoginLine{
+	width: 22%;
+	border: 1px solid navy;
+}
+
+.LoginField{
+	width: 100%;
+	border: none;
+	border-bottom: 1.3px solid navy;
+	border-radius: 0px;
+}
+
+.BtnAlign{
+	text-align: center;
+}
+
+.LoginFixedIcon{
+	margin-top: 12px;
+	padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+ 	.LoginDiv{
+ 		width: 85%;	
+ 		margin: 0px auto;
+ 		margin-top: 100px;
+ 		padding: 10px;
+ 		top: 50%;
+ 	}
+}
+
+@media only screen and (min-width: 600px) {
+ 	.LoginDiv{
+ 		width: 85%;	
+ 		margin: 0px auto;
+ 		margin-top: 110px;
+ 		padding: 10px;
+ 		top: 50%;
+ 	}
+}
+
+@media only screen and (min-width: 768px) {
+ 	.LoginDiv{
+ 		width: 75%;	
+ 		margin: 0px auto;
+ 		margin-top: 140px;
+ 		padding: 10px;
+ 		top: 50%;
+ 	}
+}
+
+@media only screen and (min-width: 992px) {
+ 	.LoginDiv{
+ 		width: 60%;	
+ 		margin: 0px auto;
+ 		margin-top: 100px;
+ 		padding: 10px;
+ 		top: 50%;
+ 	}
+}
+
+@media only screen and (min-width: 1200px) {
+ 	.LoginDiv{
+ 		width: 50%;	
+ 		margin: 0px auto;
+ 		margin-top: 130px;
+ 		padding: 10px;
+ 		top: 50%;
+ 	}
+}
+
+.LoginCardLayout{
+	margin: auto;
+	padding: 20px;
+	box-sizing: border-box;
+	border: none;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+	border-radius: 20px;
+	text-align: center;
+	color: navy;
+	background-color: rgba(255,255,255,0.8);
+}

@@ -1,0 +1,125 @@
+.HomeCardLayout{
+	width: 100%;
+	height: 170px;
+	box-sizing: border-box;
+	border: none;
+	background-color: #f0f5f5;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+	border-radius: 20px;
+	margin: 10px auto;
+}
+
+/*.HomeCardLayout:hover{
+	background-color: #f0f5f5;
+	transition: 0.3s;
+	border: none;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+	border-radius: 20px;
+	margin: 10px auto;
+}*/
+
+@media only screen and (max-width: 600px) {
+ 	.EventCard{
+ 		width: 100px !important;
+ 		height: 160px;
+ 		box-sizing: border-box;
+ 		border: 1px solid #000;
+ 		padding: 15px auto;
+ 		margin: 10px auto;
+ 		box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+ 		border-radius: 20px;
+ 		margin: 5px auto;
+ 		overflow-x: hidden;
+ 		overflow-y: hidden;
+ 	}
+}
+
+@media only screen and (min-width: 600px) {
+ 	.EventCard{
+ 		width: 170px !important;
+ 		height: 160px;
+ 		box-sizing: border-box;
+ 		border: 1px solid #000;
+ 		box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+ 		border-radius: 20px;
+ 		padding: 25px auto;
+ 		margin: 5px auto;
+ 		overflow-x: hidden;
+ 		overflow-y: hidden;
+ 	}
+}
+
+@media only screen and (min-width: 768px) {
+ 	.EventCard{
+ 		width: 240px !important;
+ 		height: 160px;
+ 		box-sizing: border-box;
+ 		border: 1px solid #000;
+ 		box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+ 		border-radius: 20px;
+ 		padding: 25px auto;
+ 		margin: 5px auto;
+ 		overflow-x: hidden;
+ 		overflow-y: hidden;
+ 	}
+}
+
+@media only screen and (min-width: 992px) {
+ 	.EventCard{
+ 		width: 320px !important;
+ 		height: 160px;
+ 		box-sizing: border-box;
+ 		border: 1px solid #000;
+ 		box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+ 		border-radius: 20px;
+ 		padding: 25px auto;
+ 		margin: 5px auto;
+ 		overflow-x: hidden;
+ 		overflow-y: hidden;
+ 	}
+}
+
+@media only screen and (min-width: 1200px) {
+ 	.EventCard{
+ 		width: 420px !important;
+ 		height: 160px;
+ 		box-sizing: border-box;
+ 		border: 1px solid #000;
+ 		box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+ 		border-radius: 20px;
+ 		padding: 25px auto;
+ 		margin: 5px auto;
+ 		overflow-x: hidden;
+ 		overflow-y: hidden;
+ 	}
+}
+
+.LineStyle{
+	width: 70%;
+	border: 1px solid navy;
+}
+
+.LineStyleTop{
+	width: 30%;
+	border: 1px solid navy;
+}
+
+.Header{
+	text-align: center;
+}
+
+.LoginCardLayout{
+	margin: auto;
+	padding: 10px;
+	box-sizing: border-box;
+	border: none;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+	border-radius: 20px;
+	text-align: center;
+	color: navy;
+	background-color: rgba(255,255,255,0.8);
+}
+
+.CardContent{
+	padding: 20px;
+}

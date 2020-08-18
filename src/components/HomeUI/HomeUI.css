@@ -1,0 +1,17 @@
+.Home{
+	padding: 5px;
+}
+
+.LineStyle{
+	width: 70% !important;
+	border: 1px solid navy;
+}
+
+.MenuButton{
+	border: none;
+	color: #fff;
+}
+
+#userName {
+	text-transform: capitalize;
+}
