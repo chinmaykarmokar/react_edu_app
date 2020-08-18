@@ -32,8 +32,8 @@ class Home extends Component{
 			<div>
 				<Container>
 					<Row>				
-						<Col md = {2}></Col>
-					    <Col md = {4}>
+						<Col md = {1}></Col>
+					    <Col md = {5}>
 							<a href="/#/test/">
 					        <HomeCards className = "EventCard">
 					        	<h3 className = "Header">Tests</h3>
@@ -44,7 +44,7 @@ class Home extends Component{
 					        </HomeCards>
 							</a>
 					    </Col>
-					    <Col md = {4}>
+					    <Col md = {5}>
 							<HomeCards>
 					        	<h3 className = "Header">Events</h3>
 					        	<hr className = "LineStyle"/>
@@ -53,13 +53,13 @@ class Home extends Component{
 					        	</div>
 					        </HomeCards>
 					    </Col>
-					    <Col md = {2}></Col>
+					    <Col md = {1}></Col>
 				    </Row>
 				</Container>
 				<Container>
 					<Row>
-						<Col md = {2}></Col>
-					    <Col md = {4}>
+						<Col md = {1}></Col>
+					    <Col md = {5}>
 							<HomeCards>
 					        	<h3 className = "Header">Rooms</h3>
 					        	<hr className = "LineStyle"/>
@@ -68,7 +68,7 @@ class Home extends Component{
 					        	</div>
 					        </HomeCards>
 					    </Col>
-					    <Col md = {4}>
+					    <Col md = {5}>
 					        <HomeCards>
 					        	<h3 className = "Header">Contacts</h3>
 					        	<hr className = "LineStyle"/>
@@ -77,13 +77,13 @@ class Home extends Component{
 					        	</div>
 					        </HomeCards>
 					    </Col>
-					    <Col md = {2}></Col>
+					    <Col md = {1}></Col>
 				    </Row>
 				</Container>
 				<Container>
 					<Row>
-						<Col md = {2}></Col>
-					    <Col md = {4}>
+						<Col md = {1}></Col>
+					    <Col md = {5}>
 							<HomeCards>
 					        	<h3 className = "Header">Stats</h3>
 					        	<hr className = "LineStyle"/>
@@ -92,7 +92,7 @@ class Home extends Component{
 					        	</div>	
 					        </HomeCards>
 					    </Col>
-					    <Col md = {4}>
+					    <Col md = {5}>
 					        <HomeCards>
 					        	<h3 className = "Header">Settings</h3>
 					        	<hr className = "LineStyle"/>
@@ -101,7 +101,7 @@ class Home extends Component{
 					        	</div>
 					        </HomeCards>
 					    </Col>
-					    <Col md = {2}></Col>
+					    <Col md = {1}></Col>
 				    </Row>
 				</Container>
 			</div>
