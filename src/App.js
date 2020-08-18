@@ -13,11 +13,11 @@ class App extends Component{
             <HashRouter>
                 <div>
                     <Switch>
-                        <Route path = "/" exact component = {HomeUI}>
-                            <HomeUI/>
+                        <Route path = "/" exact component = {Login}>
+                            <Login/>
                         </Route>
                         <Route path = "/register" component = {Register}></Route>
-                        <Route path = "/login" component = {Login}></Route>
+                        <Route path = "/home" component = {HomeUI}></Route>
                         <Route path = "/homepage" component = {Home}></Route>
                     </Switch>
                 </div>
