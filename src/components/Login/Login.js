@@ -57,7 +57,7 @@ class Login extends Component{
 				<div className = "LoginCardLayout">
 					<h3>Login</h3>
 					<hr className = "LoginLine"/>
-					<Form style = {{textAlign: "left"}}>
+					<Form style = {{textAlign: "left", padding: "10px"}}>
 						<div>
 							<Form.Group controlId="formBasicEmail">
 							    <Form.Label>Username</Form.Label>

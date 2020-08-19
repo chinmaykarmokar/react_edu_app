@@ -1,0 +1,25 @@
+.SubmitData{
+	width: 60%;
+	margin: 5px auto;
+	margin-left: 5px;
+	padding: 15px;
+	align-items: center;
+	border: none;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+	border-radius: 20px;
+	color: #fff;
+	background-image: linear-gradient(to right, navy , #4d4d4d);
+}
+
+.Field{
+	width: 70%;
+}
+
+.Field1{
+	width: 100% !important;
+}
+
+.QForm{
+    /* padding-left: -50px; */
+    margin-left: -50px;
+}

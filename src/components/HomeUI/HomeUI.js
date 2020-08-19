@@ -20,8 +20,6 @@ class HomeUI extends Component{
 		loading: true,
 		userName: '',
 		phoneNo: '',
-		userName: '',
-		phoneNo: '',
 		instituteType: '',
 		emailId: '',
 		instituteName: '',
