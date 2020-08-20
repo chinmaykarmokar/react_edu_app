@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Home from '../../HomeUI/Home';
 import Profile from '../../HomeUI/Profile';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
+// import AppBar from '@material-ui/core/AppBar';
+// import Tabs from '@material-ui/core/Tabs';
 // import Tab from '@material-ui/core/Tab';
 // import Toolbar from '@material-ui/core/Toolbar';
 // import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import './TestMenu.css';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
 // import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import Spinner from '../../Spinner/Spinner';
 
@@ -60,7 +62,7 @@ class TestMenu extends Component{
 	getAccountData = () => {
 		// alert('account');
 
-		const token = window.localStorage.getItem('token');
+		const token = window.sessionStorage.getItem('token');
 
 		const headers = {
 			'Content-Type': 'application/json',
@@ -69,7 +71,7 @@ class TestMenu extends Component{
 
 		const tokenData = this.parseJwt(token);
 		this.state.userName = tokenData['username']
-		// alert(JSON.stringify(tokenData['username']));
+		alert(JSON.stringify(tokenData['username']));
 
 		// const user_id = tokenData['_id']
 		// const url = 'http://localhost:5000/edu/v1/users/teacher/get-user?user=' + user_id
@@ -112,9 +114,9 @@ class TestMenu extends Component{
 		return(
 			this.state.loading ? <Spinner/> :
 			    <div className = "Home">
-					<AppBar style = {{backgroundColor:"#fff", border:"none", boxShadow:"none"}} position="static">
-					    <Tabs centered >
-					    	<button 
+			    	<div style = {{textAlign: "center"}}>
+						<ButtonGroup size="lg" className="mb-2">
+					    	<Button 
 					    		style = {{
 					    			border:"none", 
 					    			color:"#fff",
@@ -125,8 +127,8 @@ class TestMenu extends Component{
 					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
 					    			borderTopLeftRadius: "50px",
 					    			borderBottomLeftRadius: "50px",
-					    		}} onClick = {this.handleHome}>Home</button>					    	
-					    	<button 
+					    		}} onClick = {this.handleHome}>Home</Button>					    	
+					    	<Button 
 					    		style = {{
 					    			border:"none", 
 					    			color:"#fff",
@@ -135,8 +137,8 @@ class TestMenu extends Component{
 					    			backgroundColor: "navy",
 					    			fontSize:"15px",
 					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)"
-					    		}} onClick = {this.handleProfile}>Profile</button>
-					    	<button 
+					    		}} onClick = {this.handleProfile}>Profile</Button>
+					    	<Button 
 					    		style = {{
 					    			border:"none", 
 					    			color:"#fff",
@@ -147,32 +149,32 @@ class TestMenu extends Component{
 					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
 					    			borderTopRightRadius: "50px",
 					    			borderBottomRightRadius: "50px",
-					    		}} onClick = {this.handleBilling}>Billing</button>
-					    </Tabs>        				    
-					</AppBar>
+					    		}} onClick = {this.handleBilling}>Billing</Button>
+						</ButtonGroup>
+					</div>
 					<br/>
 					<h3 className = "Header" id="userName">Welcome, {this.state['userName']}</h3>
 					<hr className = "LineStyleTop"/>
 					<br/>
 					<div>
-					{this.state.showHome ?
-					 	<Home
-							showTestMenu={true}
-						/> :
-					 	null
-					} 
-					{this.state.showProfile ?
-						<Profile 
-							userName={this.state['userName']}
-							phoneNo={this.state['phoneNo']}
-							instituteType={this.state['instituteType']}
-							emailId={this.state['emailId']}
-							instituteName={this.state['instituteName']}
-							noFreeTrial={this.state['noFreeTrial']}
-							createdDate={this.state['createdDate']}
-						/> :
-					   	null
-					} 
+						{this.state.showHome ?
+						 	<Home
+								showTestMenu={true}
+							/> :
+						 	null
+						} 
+						{this.state.showProfile ?
+							<Profile 
+								userName={this.state['userName']}
+								phoneNo={this.state['phoneNo']}
+								instituteType={this.state['instituteType']}
+								emailId={this.state['emailId']}
+								instituteName={this.state['instituteName']}
+								noFreeTrial={this.state['noFreeTrial']}
+								createdDate={this.state['createdDate']}
+							/> :
+						   	null
+						} 
 					</div>			       
 			    </div>	
 		)

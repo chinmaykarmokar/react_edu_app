@@ -156,7 +156,8 @@ class CreateTest extends Component{
         return(
             <div className = "ParentDiv">
                 <Container>
-                    <Grid item xs={12}>
+                    <Row>
+                    <Col md = {12}>
                         <div className = "CardLayout">
                             <Stepper 
                                 steps={ this.state.steps } 

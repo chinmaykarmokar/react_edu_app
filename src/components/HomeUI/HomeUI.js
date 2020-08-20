@@ -66,12 +66,12 @@ class HomeUI extends Component{
 		}
 
 		const tokenData = this.parseJwt(token);
-		// alert(JSON.stringify(headers));
+		// alert(JSON.stringify(tokenData));
 
-		// const user_id = tokenData['_id']
-		//const url = 'http://localhost:5000/edu/v1/users/teacher/get-user?user=' + user_id
+		const user_id = tokenData['_id']
+		const url = 'http://localhost:5000/edu/v1/users/teacher/get-user?user=' + user_id
 
-		const url = 'http://localhost:5000/edu/v1/users/teacher/get-user?user=5f32c46289e2a466fe6b1946'
+		// const url = 'http://localhost:5000/edu/v1/users/teacher/get-user?user=5f32c46289e2a466fe6b1946'
 
 		axios.get(url, {headers: headers})
 		.then(response =>{
@@ -102,7 +102,7 @@ class HomeUI extends Component{
 			this.setState({loading: false})
 			this.setState({showHome:true})
 
-			/*this.getAccountData();*/
+			this.getAccountData();
 		  }, 1000);
 	}
 
@@ -119,9 +119,51 @@ class HomeUI extends Component{
 					{/* <br/> */}
 					<div style = {{textAlign: "center"}}>
 						<ButtonGroup size="lg" className="mb-2">
-						    <Button onClick = {this.handleHome}>Home</Button>
-						    <Button onClick = {this.handleProfile}>Profile</Button>
-						    <Button>Billing</Button>
+						    <Button 
+						    	onClick = {this.handleHome}
+						    	style = {{
+						    		border:"none", 
+					    			color:"#fff",
+					    			width:"200px", 
+					    			padding:"20px",
+					    			fontSize:"15px",
+					    			backgroundColor: "navy",
+					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
+					    			borderTopLeftRadius: "50px",
+					    			borderBottomLeftRadius: "50px",
+						    	}}
+						    >
+						    	Home
+						    </Button>
+						    <Button 
+						    	onClick = {this.handleProfile}
+						    	style = {{
+						    		border:"none", 
+					    			color:"#fff",
+					    			width:"200px", 
+					    			padding:"20px",
+					    			backgroundColor: "navy",
+					    			fontSize:"15px",
+					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)"
+						    	}}
+						    >
+						    	Profile
+						    </Button>
+						    <Button
+						    	style = {{
+						    		border:"none", 
+						    		color:"#fff",
+						    		width:"200px", 
+						    		padding:"20px",
+						    		backgroundColor: "navy",
+						    		fontSize:"15px",
+						    		boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
+						    		borderTopRightRadius: "50px",
+						    		borderBottomRightRadius: "50px",
+						    	}}
+						    >
+						    	Billing
+						    </Button>
 						</ButtonGroup>
 					</div>
 					<br/>
@@ -130,10 +172,11 @@ class HomeUI extends Component{
 					<br/>
 					<div>
 						{this.state.showHome ?
-						 	<Home/> :
+						 	<Home
+						 		showHomeMenu={true}
+						 	/> :
 						 	null
 						}
-
 						{this.state.showProfile ?
 							<Profile 
 								userName={this.state['userName']}
