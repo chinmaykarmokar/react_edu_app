@@ -11,6 +11,30 @@
 	background-color: rgba(255,255,255,0.8);
 }
 
+Table {
+    table-layout: fixed;
+    width:100%;
+}
+
+tbody tr {
+    width: 100%;
+}
+
+td {
+    /* word-wrap:break-word; */
+}
+
+.RowHeight{
+    height: 60vh;
+}
+
+ButtonGroup{
+    margin: 0 auto; 
+    text-align: center;
+    width: inherit;
+    display: inline-block;
+}
+
 @media only screen and (max-width: 600px) {
     .ParentDiv{
         width: 85%;	
@@ -51,7 +75,7 @@
 
 @media only screen and (min-width: 1200px) {
     .ParentDiv{
-        width: 50%;	
+        width: 95%;	
         margin: 0px auto;
         padding: 10px;
         top: 50%;

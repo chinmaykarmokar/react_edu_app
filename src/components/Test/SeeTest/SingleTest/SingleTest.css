@@ -1,0 +1,16 @@
+.TestDetails{
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.TestDetailsBody{
+    padding: 30px 0px;
+    overflow-y: 70vh;
+    /* overflow-x: auto; */
+}
+
+.LoginLine{
+	width: 22%;
+	border: 1px solid navy;
+}

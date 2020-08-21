@@ -5,37 +5,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-/*import Grid from '@material-ui/core/Grid';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import TabPanel from '@material-ui/lab/TabPanel';
-import TabContext from '@material-ui/lab/TabContext';
-import Card from '@material-ui/core/Card';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';*/
 import Stepper from 'react-stepper-horizontal';
-/*import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText*/';
-import Checkbox from '@material-ui/core/Checkbox';
+
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
 import './CreateTest.css'
 
 // Component Definition:
@@ -155,7 +128,7 @@ class CreateTest extends Component{
     render(){
         return(
             <div className = "ParentDiv">
-                <Container>
+                <Container fluid="md">
                     <Row>
                     <Col md = {12}>
                         <div className = "CardLayout">
@@ -171,87 +144,157 @@ class CreateTest extends Component{
                                         <h3>Enter Test Data</h3>
                                         <hr className = "Line"/>
                                     </div>
-                                    <div>
-                                        <TextField 
-                                            className = "Field" 
-                                            id="standard-basic" 
-                                            label="Details"
-                                            value={this.state.details} 
-                                            onChange={(event) => this.setState({details: event.target.value})}  
-                                        />
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <TextField 
-                                            className = "Field" 
-                                            id="standard-basic" 
-                                            label="Customer Id"
-                                            value={this.state.customerId} 
-                                            onChange={(event) => this.setState({customerId: event.target.value})}  
-                                        />
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <TextField 
-                                            className = "Field" 
-                                            id="standard-basic" 
-                                            label="No of Mandatory Questions"
-                                            type="number"
-                                            value={this.state.noMandatoryQuestions} 
-                                            onChange={(event) => this.setState({noMandatoryQuestions: event.target.value})}  
-                                        />
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <TextField
-                                            className = "Field" 
-                                            id="datetime-local"
-                                            label="Schedule"
-                                            type="datetime-local"
-                                            className = "Field" 
-                                            defaultValue="2017-05-24T10:30"
-                                            /*value={this.state.schedule}*/ 
-                                            onChange={(event) => this.setState({schedule: event.target.value})}
-                                        />
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <TextField
-                                            className = "Field" 
-                                            id="datetime-local"
-                                            label="Start Time"
-                                            type="datetime-local"
-                                            defaultValue="2017-05-24T10:30"
-                                            /*value={this.state.startTime}*/ 
-                                            onChange={(event) => this.setState({startTime: event.target.value})}
-                                        />
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <TextField
-                                            className = "Field" 
-                                            id="datetime-local"
-                                            label="End Time"
-                                            defaultValue="2017-05-24T10:30"
-                                            onChange={(event) => this.setState({endTime: event.target.value})}
-                                        />
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <TextField 
-                                            className = "Field" 
-                                            id="standard-basic" 
-                                            label="Duration"
-                                            type="number"
-                                            value={this.state.duration} 
-                                            onChange={(event) => this.setState({duration: event.target.value})}  
-                                        />
-                                    </div>
-                                    <br/>
+                                    <Form style = {{textAlign: "left", padding: "10px"}}>
+                                        <div>
+                                            {/* <TextField 
+                                                className = "Field" 
+                                                id="standard-basic" 
+                                                label="Details"
+                                                value={this.state.details} 
+                                                onChange={(event) => this.setState({details: event.target.value})}  
+                                            /> */}
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label >Details</Form.Label>
+                                                <Form.Control
+                                                    type="text" 
+                                                    placeholder="Enter Details" 
+                                                    className = "Field" 
+                                                    value={this.state.details} 
+                                                    onChange={(event) => this.setState({details: event.target.value})}  
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            {/* <TextField 
+                                                className = "Field" 
+                                                id="standard-basic" 
+                                                label="Customer Id"
+                                                value={this.state.customerId} 
+                                                onChange={(event) => this.setState({customerId: event.target.value})}  
+                                            /> */}
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label >Customer Id</Form.Label>
+                                                <Form.Control
+                                                    type="text" 
+                                                    placeholder="Enter Customer Id" 
+                                                    className = "Field" 
+                                                    value={this.state.customerId} 
+                                                    onChange={(event) => this.setState({customerId: event.target.value})}  
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            {/* <TextField 
+                                                className = "Field" 
+                                                id="standard-basic" 
+                                                label="No of Mandatory Questions"
+                                                type="number"
+                                                value={this.state.noMandatoryQuestions} 
+                                                onChange={(event) => this.setState({noMandatoryQuestions: event.target.value})}  
+                                            /> */}
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label >No of Mandatory Questions</Form.Label>
+                                                <Form.Control
+                                                    type="text" 
+                                                    placeholder="Enter No of Mandatory Questions" 
+                                                    className = "Field" 
+                                                    value={this.state.noMandatoryQuestions} 
+                                                    onChange={(event) => this.setState({noMandatoryQuestions: event.target.value})}  
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            {/* <TextField
+                                                className = "Field" 
+                                                id="datetime-local"
+                                                label="Schedule"
+                                                type="datetime-local"
+                                                className = "Field" 
+                                                defaultValue="2017-05-24T10:30"
+                                                onChange={(event) => this.setState({schedule: event.target.value})}
+                                            /> */}
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label >Schedule</Form.Label>
+                                                <Form.Control
+                                                    type="text" 
+                                                    placeholder="Enter Test Schedule" 
+                                                    className = "Field" 
+                                                    value={this.state.schedule} 
+                                                    onChange={(event) => this.setState({schedule: event.target.value})}  
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            {/* <TextField
+                                                className = "Field" 
+                                                id="datetime-local"
+                                                label="Start Time"
+                                                type="datetime-local"
+                                                defaultValue="2017-05-24T10:30"
+                                                onChange={(event) => this.setState({startTime: event.target.value})}
+                                            /> */}
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label >Start Time</Form.Label>
+                                                <Form.Control
+                                                    type="text" 
+                                                    placeholder="Enter Test Start Time" 
+                                                    className = "Field" 
+                                                    value={this.state.startTime} 
+                                                    onChange={(event) => this.setState({startTime: event.target.value})}  
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            {/* <TextField
+                                                className = "Field" 
+                                                id="datetime-local"
+                                                label="End Time"
+                                                defaultValue="2017-05-24T10:30"
+                                                onChange={(event) => this.setState({endTime: event.target.value})}
+                                            /> */}
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label >End Time</Form.Label>
+                                                <Form.Control
+                                                    type="text" 
+                                                    placeholder="Enter Test End Time" 
+                                                    className = "Field" 
+                                                    value={this.state.endTime} 
+                                                    onChange={(event) => this.setState({endTime: event.target.value})}  
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            {/* <TextField 
+                                                className = "Field" 
+                                                id="standard-basic" 
+                                                label="Duration"
+                                                type="number"
+                                                value={this.state.duration} 
+                                                onChange={(event) => this.setState({duration: event.target.value})}  
+                                            /> */}
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label >Duration</Form.Label>
+                                                <Form.Control
+                                                    type="text" 
+                                                    placeholder="Enter Test Duration" 
+                                                    className = "Field" 
+                                                    value={this.state.duration} 
+                                                    onChange={(event) => this.setState({duration: event.target.value})}  
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <br/>
+                                    </Form>
                                 </div>
                                 : null
                             }
-                            {
+                            {/* {
                                 this.state.showTestQuestions ?
                                 <div>
                                     <div>
@@ -330,7 +373,7 @@ class CreateTest extends Component{
                                     <br/>
                                 </div>
                                 : null
-                            }
+                            } */}
                             <div className = "BtnAlign">
                                 <ButtonGroup variant="contained" color="green" aria-label="contained green button group">
                                     <Button 
@@ -359,8 +402,9 @@ class CreateTest extends Component{
                             </div>
                             <br/>
                         </div>
-                    </Grid>
-                </Grid>
+                    </Col>
+                    </Row>
+                </Container>
             </div>
         )
     }
