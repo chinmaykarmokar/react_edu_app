@@ -24,16 +24,6 @@ class SingleTest extends Component{
         no_mandatory_questions: 0,
         test_id: "",
         qna: [],
-        //     {
-        //         "_id": "5f285d8da4b7aa4c4002a65c",
-        //         "question": "2+2",
-        //         "option1": "2",
-        //         "option2": "3",
-        //         "option3": "4",
-        //         "option4": "5",
-        //         "answer": "c"
-        //     }
-        // ]
         loading: true,
     }
 

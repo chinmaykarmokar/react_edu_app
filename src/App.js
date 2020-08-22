@@ -7,6 +7,8 @@ import HomeUI from './components/HomeUI/HomeUI';
 import TestMenu from './components/Test/TestMenu/TestMenu'
 import SeeTest from './components/Test/SeeTest/SeeTest'
 import CreateTest from './components/Test/CreateTest/CreateTest'
+import UpdateTest from './components/Test/UpdateTest/UpdateTest'
+import DeleteTest from './components/Test/DeleteTest/DeleteTest'
 import SingleTest from './components/Test/SeeTest/SingleTest/SingleTest'
 import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import './App.css';
@@ -30,6 +32,8 @@ class App extends Component{
                         <Route path = "/test-list" component = {SeeTest}></Route>
                         <Route path = "/test-get" component = {SingleTest}></Route>
                         <Route path = "/test-create" component = {CreateTest}></Route>
+                        <Route path = "/test-mod" component = {UpdateTest}></Route>
+                        <Route path = "/test-del" component = {DeleteTest}></Route>
                     </Switch>
                 </div>
             </HashRouter> 

@@ -59,7 +59,6 @@ class Register extends Component{
 				<hr className = "Line"/>
 				<Form style = {{textAlign: "left", padding: "10px"}}>
 					
-					
 					<Form.Group controlId="formBasicEmail">
 					    <Form.Label >Name</Form.Label>
 					    <Form.Control

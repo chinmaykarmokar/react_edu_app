@@ -57,6 +57,7 @@ const Home = (props) => {
 						<Row>
 						<Col md={1}></Col>
 						<Col md={5}>
+						<a href="/#/test-mod">
 							<HomeCards>
 								<h3 className = "Header">Update Tests</h3>
 								<hr className = "LineStyle"/>
@@ -64,15 +65,18 @@ const Home = (props) => {
 									<FaPencilAlt style = {{color: "navy"}}/>
 								</div>
 							</HomeCards>
+						</a>
 						</Col>
 						<Col md={5}>
-							<HomeCards>
-								<h3 className = "Header">Delete Tests</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaGooglePlus style = {{color: "navy"}}/>
-								</div>
-							</HomeCards>
+							<a href="/#/test-del">
+								<HomeCards>
+									<h3 className = "Header">Delete Tests</h3>
+									<hr className = "LineStyle"/>
+									<div style = {{textAlign:"center", fontSize: "50px"}}>
+										<FaGooglePlus style = {{color: "navy"}}/>
+									</div>
+								</HomeCards>
+							</a>
 						</Col>
 						<Col md={1}></Col>
 						</Row>
