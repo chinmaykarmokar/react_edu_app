@@ -59,7 +59,6 @@ class SeeTest extends Component{
 			console.log([response['data']["test_data"]["total"]]);
 
 			if(response['status'] == 200) {
-                // this.setState({userName: response['data']['users']['name']});
                 this.setState({total: response['data']["test_data"]["total"]});
                 this.setState({pageNo: response['data']["test_data"]["pageno"]});
                 this.setState({previous: response['data']["test_data"]["previous"]});

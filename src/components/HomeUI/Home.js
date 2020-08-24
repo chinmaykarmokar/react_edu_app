@@ -85,6 +85,68 @@ const Home = (props) => {
 				: null
 			}
 			{
+				props.showRoomMenu ?
+				<div>
+					<Container>
+						<Row>
+						<Col md={1}></Col>
+						<Col md={5}>
+							<a href="/#/room-create">
+							<HomeCards className = "EventCard">
+								<h3 className = "Header">Create Rooms</h3>
+								<hr className = "LineStyle"/>
+								<div style = {{textAlign:"center", fontSize: "50px"}}>
+									<FaPlus style = {{color: "navy"}}/>
+								</div>  
+							</HomeCards>
+							</a>
+						</Col>
+						<Col md={5}>
+						<a href="/#/room-list">
+							<HomeCards>
+								<h3 className = "Header">See Rooms</h3>
+								<hr className = "LineStyle"/>
+								<div style = {{textAlign:"center", fontSize: "50px"}}>
+									<FaRegListAlt style = {{color: "navy"}}/>
+								</div>
+							</HomeCards>
+						</a>
+						</Col>
+						<Col md={1}></Col>
+						</Row>
+					</Container>
+					<Container>
+						<Row>
+						<Col md={1}></Col>
+						<Col md={5}>
+						<a href="/#/room-mod">
+							<HomeCards>
+								<h3 className = "Header">Update Rooms</h3>
+								<hr className = "LineStyle"/>
+								<div style = {{textAlign:"center", fontSize: "50px"}}>
+									<FaPencilAlt style = {{color: "navy"}}/>
+								</div>
+							</HomeCards>
+						</a>
+						</Col>
+						<Col md={5}>
+							<a href="/#/room-del">
+								<HomeCards>
+									<h3 className = "Header">Delete Rooms</h3>
+									<hr className = "LineStyle"/>
+									<div style = {{textAlign:"center", fontSize: "50px"}}>
+										<FaGooglePlus style = {{color: "navy"}}/>
+									</div>
+								</HomeCards>
+							</a>
+						</Col>
+						<Col md={1}></Col>
+						</Row>
+					</Container>
+				</div>
+				: null
+			}
+			{
 				props.showHomeMenu ?
 				<div>
 					<Container>
@@ -102,6 +164,7 @@ const Home = (props) => {
 							</a>
 						</Col>
 						<Col md={5}>
+							<a href="/#/event-list">
 							<HomeCards>
 								<h3 className = "Header">Events</h3>
 								<hr className = "LineStyle"/>
@@ -109,6 +172,7 @@ const Home = (props) => {
 									<FaRegCalendarAlt style = {{color: "navy"}}/>
 								</div>
 							</HomeCards>
+							</a>
 						</Col>
 						<Col md={1}></Col>
 						</Row>
@@ -117,6 +181,7 @@ const Home = (props) => {
 						<Row>
 						<Col md={1}></Col>
 						<Col md={5}>
+							<a href="/#/room-menu">
 							<HomeCards>
 								<h3 className = "Header">Rooms</h3>
 								<hr className = "LineStyle"/>
@@ -124,6 +189,7 @@ const Home = (props) => {
 									<FaUsers style = {{color: "navy"}}/>
 								</div>
 							</HomeCards>
+							</a>
 						</Col>
 						<Col md={5}>
 							<HomeCards>

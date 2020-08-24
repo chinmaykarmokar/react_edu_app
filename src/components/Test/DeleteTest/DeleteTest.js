@@ -131,7 +131,11 @@ class DeleteTest extends Component {
             )
         }
         return pagesButtons
-    }
+	}
+	
+	deleteTest = (testId) => {
+		console.log(testId);
+	}
 
 	componentDidMount() {
 	    setTimeout(() => {
@@ -156,8 +160,8 @@ class DeleteTest extends Component {
 				        <Col md={1}></Col>
 				    </Row>
 				    <Row>
-				        <Col md={1}></Col>
-				        <Col md={10}>
+				        {/* <Col md={1}></Col> */}
+				        <Col md={12}>
 				        	<Card>
 				        		<Card.Body>
 				        			<Table responsive>
@@ -170,8 +174,9 @@ class DeleteTest extends Component {
 				        			            <th align="right">Start Time</th>
 				        			            <th align="right">End Time</th>
 				        			            <th align="right">No of Questions</th>
-				        			            <th align="right">Deleted</th>
-				        			            <th align="right">Customer Id</th>
+												<th align="right">Action</th>
+				        			            {/* <th align="right">Deleted</th> */}
+				        			            {/* <th align="right">Customer Id</th> */}
 				        			            {/* <th align="right">Test Id</th> */}
 				        			        </tr>
 				        			    </thead>
@@ -203,12 +208,17 @@ class DeleteTest extends Component {
 				        			                <td>
 				        			                    {this.state.testData[row][0]['no_mandatory_questions']}
 				        			                </td>
-				        			                <td>
-				        			                    {this.state.testData[row][0]['deleted'] ? this.state.testData[row][0]['deleted']: 0}
-				        			                </td>
-				        			                <td>
+													<td>
+														<Button 
+															variant="danger" 
+															onClick={() => this.deleteTest(this.state.testData[row][0]['id'])}
+														>
+															Delete
+														</Button>
+													</td>
+				        			                {/* <td>
 				        			                    {this.state.testData[row][0]['customerid']}
-				        			                </td>
+				        			                </td> */}
 				        			                {/* <td>
 				        			                    {this.state.testData[row][0]['testid']}
 				        			                </td> */}
@@ -230,7 +240,7 @@ class DeleteTest extends Component {
 				        		</Card.Body>
 				        	</Card>
 				        </Col>
-				        <Col md={1}></Col>
+				        {/* <Col md={1}></Col> */}
 					</Row>
 				</Container>
 			}
