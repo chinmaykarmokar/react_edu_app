@@ -16,8 +16,9 @@ import DeleteTest from './components/Test/DeleteTest/DeleteTest'
 import SingleTest from './components/Test/SeeTest/SingleTest/SingleTest'
 import RoomMenu from './components/Room/RoomMenu/RoomMenu'
 import SeeRoom from './components/Room/SeeRoom/SeeRoom'
+import SingleRoom from './components/Room/SeeRoom/SingleRoom/SingleRoom'
 import CreateRoom from './components/Room/CreateRoom/CreateRoom'
-// import UpdateRoom from './components/Room/UpdateRoom/UpdateRoom'
+import UpdateRoom from './components/Room/UpdateRoom/UpdateRoom'
 // import DeleteRoom from './components/Room/DeleteRoom/DeleteRoom'
 // import SingleRoom from './components/Room/SeeRoom/SingleRoom/SingleRoom'
 import EventCal from './components/EventCal/EventCal'
@@ -52,6 +53,8 @@ class App extends Component{
                         <Route path = "/room-menu" component = {RoomMenu}></Route>
                         <Route path = "/room-create" component = {CreateRoom}></Route>
                         <Route path = "/room-list" component = {SeeRoom}></Route>
+                        <Route path = "/room-get" component = {SingleRoom}></Route>
+                        <Route path = "/room-mod" component = {UpdateRoom}></Route>
                     </Switch>
                 </div>
             </HashRouter> 

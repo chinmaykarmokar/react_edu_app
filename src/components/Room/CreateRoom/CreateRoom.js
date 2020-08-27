@@ -1,3 +1,5 @@
+// Import Modules:
+
 import React, { Component } from 'react';
 import Home from '../../HomeUI/Home';
 import Profile from '../../HomeUI/Profile';
@@ -16,6 +18,8 @@ import Button from 'react-bootstrap/Button';
 // import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import Spinner from '../../Spinner/Spinner';
 import { toast } from 'react-toastify';
+
+// Component Definitions:
 
 class CreateRoom extends Component{
 
@@ -121,56 +125,48 @@ class CreateRoom extends Component{
 		    		    		<Card className="TestDetails">
 		    		    			<Card.Body>
 							    		<Form style = {{textAlign: "left", padding: "10px"}}>
-							    		    <div>
-							    		        <Form.Group controlId="formBasicEmail">
-							    		            <Form.Label >Teacher Id</Form.Label>
-							    		            <Form.Control
-							    		                type="text" 
-							    		                placeholder="Enter Teacher Id" 
-							    		                className = "Field" 
-							    		                value={this.state.teacherId} 
-							    		                onChange={(event) => this.setState({teacherId: event.target.value})}  
-							    		            />
-							    		        </Form.Group>
-							    		    </div>
-                                            <div>
-							    		        <Form.Group controlId="formBasicEmail">
-							    		            <Form.Label >Room Limit</Form.Label>
-							    		            <Form.Control
-							    		                type="number" 
-							    		                // placeholder="Enter Room Limit" 
-                                                        className = "Field"
-                                                        min = "10"
-                                                        max = "100" 
-							    		                value={this.state.limit} 
-							    		                onChange={(event) => this.setState({limit: event.target.value})}  
-							    		            />
-							    		        </Form.Group>
-							    		    </div>
-                                            <div>
-							    		        <Form.Group controlId="formBasicEmail">
-							    		            <Form.Label >Room Agenda</Form.Label>
-							    		            <Form.Control
-							    		                type="text" 
-							    		                placeholder="Enter Room Agenda" 
-							    		                className = "Field" 
-							    		                value={this.state.agenda} 
-							    		                onChange={(event) => this.setState({agenda: event.target.value})}  
-							    		            />
-							    		        </Form.Group>
-							    		    </div>
-                                            <div>
-							    		        <Form.Group controlId="formBasicEmail">
-							    		            <Form.Label >Room Name</Form.Label>
-							    		            <Form.Control
-							    		                type="text" 
-							    		                placeholder="Enter Room Name" 
-							    		                className = "Field" 
-							    		                value={this.state.roomName} 
-							    		                onChange={(event) => this.setState({roomName: event.target.value})}  
-							    		            />
-							    		        </Form.Group>
-							    		    </div>
+						    		        <Form.Group controlId="formBasicEmail">
+						    		            <Form.Label >Teacher Id</Form.Label>
+						    		            <Form.Control
+						    		                type="text" 
+						    		                placeholder="Enter Teacher Id" 
+						    		                className = "Field" 
+						    		                value={this.state.teacherId} 
+						    		                onChange={(event) => this.setState({teacherId: event.target.value})}  
+						    		            />
+						    		        </Form.Group>
+						    		        <Form.Group controlId="formBasicEmail">
+						    		            <Form.Label >Room Limit</Form.Label>
+						    		            <Form.Control
+						    		                type="number" 
+						    		                // placeholder="Enter Room Limit" 
+                                                    className = "Field"
+                                                    min = "10"
+                                                    max = "100" 
+						    		                value={this.state.limit} 
+						    		                onChange={(event) => this.setState({limit: event.target.value})}  
+						    		            />
+						    		        </Form.Group>
+						    		        <Form.Group controlId="formBasicEmail">
+						    		            <Form.Label >Room Agenda</Form.Label>
+						    		            <Form.Control
+						    		                type="text" 
+						    		                placeholder="Enter Room Agenda" 
+						    		                className = "Field" 
+						    		                value={this.state.agenda} 
+						    		                onChange={(event) => this.setState({agenda: event.target.value})}  
+						    		            />
+						    		        </Form.Group>
+						    		        <Form.Group controlId="formBasicEmail">
+						    		            <Form.Label >Room Name</Form.Label>
+						    		            <Form.Control
+						    		                type="text" 
+						    		                placeholder="Enter Room Name" 
+						    		                className = "Field" 
+						    		                value={this.state.roomName} 
+						    		                onChange={(event) => this.setState({roomName: event.target.value})}  
+						    		            />
+						    		        </Form.Group>
 							    		</Form>
 				    					<br/>
 				    		    		<br/>

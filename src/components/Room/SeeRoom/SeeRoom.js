@@ -73,11 +73,12 @@ class SeeRoom extends Component{
         // alert(JSON.stringify(tokenData));
         const teacherId = tokenData['_id']
 
-		const url = 'http://localhost:5000/edu/v1/rooms/get-room?room_id=all&teacher_id='+teacherId+'&pageno=' + pageNo
+		const url = 'http://localhost:5000/edu/v1/rooms/get-room?room_id=all&teacher_id='+teacherId+'&pageno='+pageNo
+        console.log(url)
 
 		axios.get(url, {headers: headers})
 		.then(response =>{
-			console.log([response['data']["test_data"]["total"]]);
+			console.log([response['data']["rooms_data"]["data"]]);
 
 			if(response['status'] == 200) {
                 this.setState({total: response['data']["rooms_data"]["total"]});
@@ -147,7 +148,7 @@ class SeeRoom extends Component{
 
     createChart = () => {
         // let chart = {series: []}
-        console.log(am4core.create)
+        // console.log(am4core.create)
         let chart = am4core.create("chartdiv", am4plugins_forceDirected.ForceDirectedTree);
         let networkSeries = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
 
@@ -170,16 +171,17 @@ class SeeRoom extends Component{
         // ))
         for(let j=0; j<this.state.roomData.length ;j++){
                 children.push({
-                name: 'room.id',
-                value: 10
+                name: this.state.roomData[j].room_name,
+                value: this.state.roomData[j].limit,
+                id: this.state.roomData[j].room_id
             })
         }
-        // chart.data = [
-        //     {
-        //         name: "Teacher",
-        //         children: children
-        //     }
-        // ]
+         chart.data = [
+            {
+                name: "Teacher",
+                children: children
+            }
+        ]
         // chart.data[0].children = children;
         // console.log(chart.data);
         console.log(this.state.roomData.length);
@@ -210,11 +212,14 @@ class SeeRoom extends Component{
         networkSeries.dataFields.value = "value";
         networkSeries.dataFields.name = "name";
         networkSeries.dataFields.children = "children";
-        networkSeries.nodes.template.tooltipText = "{name}:{value}";
+        // networkSeries.nodes.template.tooltipText = "{name}:{value}";
+        networkSeries.nodes.template.tooltipText = "{name}: {value}";
         networkSeries.nodes.template.fillOpacity = 1;
 
         networkSeries.nodes.template.label.text = "{name}"
         networkSeries.fontSize = 10;
+        networkSeries.minRadius = 30;
+        networkSeries.maxRadius = 50;
 
         networkSeries.links.template.strokeWidth = 1;
 
@@ -232,15 +237,27 @@ class SeeRoom extends Component{
         })
 
         networkSeries.nodes.template.events.on("out", function(event) {
-        event.target.dataItem.childLinks.each(function(link) {
-        link.isHover = false;
-        })
-        if (event.target.dataItem.parentLink) {
-        event.target.dataItem.parentLink.isHover = false;
-        }
+            event.target.dataItem.childLinks.each(function(link) {
+                link.isHover = false;
+            })
+            if (event.target.dataItem.parentLink) {
+                event.target.dataItem.parentLink.isHover = false;
+            }
         })
 
-        // this.setState({chart: chart});
+        networkSeries.nodes.template.events.on("hit", function(event) {
+            console.log(event.target.dataItem.dataContext);
+
+            const roomId = event.target.dataItem.dataContext.id;
+            console.log(roomId);
+            const token = window.sessionStorage.getItem('token');
+            const tokenData = JSON.parse(atob(token.split('.')[1]));
+            const teacherId = tokenData['_id']
+            // const teacherId = this.state.teacherId;
+            const url = 'http://localhost:3000/#/room-get?room_id='+roomId+'&teacher_id='+teacherId;
+            // window.open(url, '_blank');
+            window.location.href = url;
+        });
     }
 
     componentDidMount() {
@@ -252,8 +269,12 @@ class SeeRoom extends Component{
             this.setState({teacherId:user_id})
 
             this.getRoomsData(1);
-			this.createChart();
+			// this.createChart();
 		  }, 1000);
+
+        setTimeout(() => {
+            this.createChart()}
+            , 2500);
 	}
 
     render(){
