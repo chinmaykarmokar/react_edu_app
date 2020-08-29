@@ -65,7 +65,8 @@ class TestMenu extends Component{
 		}
 
 		const tokenData = this.parseJwt(token);
-		this.state.userName = tokenData['username']
+		// this.state.userName = tokenData['username']
+		this.setState({userName: tokenData['username']});
 		// alert(JSON.stringify(tokenData['username']));
 
 		// const user_id = tokenData['_id']
