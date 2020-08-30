@@ -18,6 +18,7 @@ import Button from 'react-bootstrap/Button';
 // import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import Spinner from '../../Spinner/Spinner';
 import { toast } from 'react-toastify';
+import Navibar from '../../Navibar/Navibar'
 
 // Component Definitions:
 
@@ -111,80 +112,84 @@ class CreateRoom extends Component{
             <div>
                 {
                     this.state.loading? <Spinner/>:
-                    <Container>
-                        <Row>
-					    	<Col md={3}></Col>
-					    	<Col md={6} style = {{}}>
-					    		<br/>
-		    		    		<br/>
-		    		    		<div>
-		    		    		    <h3 align="center">Create New Room</h3>
-		    		    		    <hr className = "Line"/>
-		    		    		</div>
-		    		    		<br/>
-		    		    		<Card className="TestDetails">
-		    		    			<Card.Body>
-							    		<Form style = {{textAlign: "left", padding: "10px"}}>
-						    		        <Form.Group controlId="formBasicEmail">
-						    		            <Form.Label >Teacher Id</Form.Label>
-						    		            <Form.Control
-						    		                type="text" 
-						    		                placeholder="Enter Teacher Id" 
-						    		                className = "Field" 
-						    		                value={this.state.teacherId} 
-						    		                onChange={(event) => this.setState({teacherId: event.target.value})}  
-						    		            />
-						    		        </Form.Group>
-						    		        <Form.Group controlId="formBasicEmail">
-						    		            <Form.Label >Room Limit</Form.Label>
-						    		            <Form.Control
-						    		                type="number" 
-						    		                // placeholder="Enter Room Limit" 
-                                                    className = "Field"
-                                                    min = "10"
-                                                    max = "100" 
-						    		                value={this.state.limit} 
-						    		                onChange={(event) => this.setState({limit: event.target.value})}  
-						    		            />
-						    		        </Form.Group>
-						    		        <Form.Group controlId="formBasicEmail">
-						    		            <Form.Label >Room Agenda</Form.Label>
-						    		            <Form.Control
-						    		                type="text" 
-						    		                placeholder="Enter Room Agenda" 
-						    		                className = "Field" 
-						    		                value={this.state.agenda} 
-						    		                onChange={(event) => this.setState({agenda: event.target.value})}  
-						    		            />
-						    		        </Form.Group>
-						    		        <Form.Group controlId="formBasicEmail">
-						    		            <Form.Label >Room Name</Form.Label>
-						    		            <Form.Control
-						    		                type="text" 
-						    		                placeholder="Enter Room Name" 
-						    		                className = "Field" 
-						    		                value={this.state.roomName} 
-						    		                onChange={(event) => this.setState({roomName: event.target.value})}  
-						    		            />
-						    		        </Form.Group>
-							    		</Form>
-				    					<br/>
-				    		    		<br/>
-				    		    		<div className="BtnAlign">
-				    		    		<Button 
-				    		    		    className = "SubmitData1" 
-				    		    		    onClick = {this.onCreateRoom}
-				    		    		>
-				    		    		    Create Room
-				    		    		</Button>
-				    		    		</div>
-				    		    		<br/>
-							    	</Card.Body>
-					    		</Card>
-					    	</Col>
-					    	<Col md={3}></Col>
-					    </Row>
-                    </Container>
+                    <div>
+                        <Navibar/>
+                        <Container>
+                            <Row>
+                                <Col md={3}></Col>
+                                <Col md={6} style = {{}}>
+                                    <Card className="TestDetails">
+                                        <Card.Body>
+                                            <br/>
+                                            {/* <br/> */}
+                                            <div>
+                                                <h3 align="center">Create New Room</h3>
+                                                <hr className = "Line"/>
+                                            </div>
+                                            <br/>
+                                            
+                                            <Form style = {{textAlign: "left", padding: "10px"}}>
+                                                <Form.Group controlId="formBasicEmail">
+                                                    <Form.Label >Teacher Id</Form.Label>
+                                                    <Form.Control
+                                                        type="text" 
+                                                        placeholder="Enter Teacher Id" 
+                                                        className = "Field" 
+                                                        value={this.state.teacherId} 
+                                                        onChange={(event) => this.setState({teacherId: event.target.value})}  
+                                                    />
+                                                </Form.Group>
+                                                <Form.Group controlId="formBasicEmail">
+                                                    <Form.Label >Room Limit</Form.Label>
+                                                    <Form.Control
+                                                        type="number" 
+                                                        // placeholder="Enter Room Limit" 
+                                                        className = "Field"
+                                                        min = "10"
+                                                        max = "100" 
+                                                        value={this.state.limit} 
+                                                        onChange={(event) => this.setState({limit: event.target.value})}  
+                                                    />
+                                                </Form.Group>
+                                                <Form.Group controlId="formBasicEmail">
+                                                    <Form.Label >Room Agenda</Form.Label>
+                                                    <Form.Control
+                                                        type="text" 
+                                                        placeholder="Enter Room Agenda" 
+                                                        className = "Field" 
+                                                        value={this.state.agenda} 
+                                                        onChange={(event) => this.setState({agenda: event.target.value})}  
+                                                    />
+                                                </Form.Group>
+                                                <Form.Group controlId="formBasicEmail">
+                                                    <Form.Label >Room Name</Form.Label>
+                                                    <Form.Control
+                                                        type="text" 
+                                                        placeholder="Enter Room Name" 
+                                                        className = "Field" 
+                                                        value={this.state.roomName} 
+                                                        onChange={(event) => this.setState({roomName: event.target.value})}  
+                                                    />
+                                                </Form.Group>
+                                            </Form>
+                                            <br/>
+                                            <br/>
+                                            <div className="BtnAlign">
+                                            <Button 
+                                                className = "SubmitData1" 
+                                                onClick = {this.onCreateRoom}
+                                            >
+                                                Create Room
+                                            </Button>
+                                            </div>
+                                            <br/>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col md={3}></Col>
+                            </Row>
+                        </Container>
+                    </div>
                 }
             </div>
         )

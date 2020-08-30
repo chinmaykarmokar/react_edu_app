@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { toast } from 'react-toastify';
+import Navibar from '../../Navibar/Navibar'
 
 class SeeTest extends Component{
 
@@ -147,90 +148,90 @@ class SeeTest extends Component{
     render(){
         return(
             this.state.loading ? <Spinner/> :
-            <Container fluid="md">
-                <Row>
-                    {/* <Col md={1}></Col> */}
-                    <Col md={12}>
-                        <br></br>
-                        <Card className="Card">
-                            <Card.Body>
-                                <br/>
-                                <h4>Test Lists:</h4>
-                                <hr className="LoginLine"/>
-                                <br/>
-                                <Table responsive>
-                                    <thead>
-                                        <tr>
-                                            <th align="right">Test Id</th>
-                                            <th align="right">Details</th>
-                                            <th align="right">Schedule</th>
-                                            <th align="right">Duration</th>
-                                            <th align="right">Start Time</th>
-                                            <th align="right">End Time</th>
-                                            <th align="right">No of Questions</th>
-                                            <th align="right">Deleted</th>
-                                            <th align="right">Customer Id</th>
-                                            {/* <th align="right">Test Id</th> */}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <div class="RowHeight">
-                                        {Object.keys(this.state.testData).map((row) => (
+            <div>
+                <Navibar/>
+                <Container fluid="md">
+                    <Row>
+                        <Col md={12}>
+                            <Card className="Card">
+                                <Card.Body>
+                                    <br/>
+                                    <h4>Test Lists:</h4>
+                                    <hr className="LoginLine"/>
+                                    <br/>
+                                    <Table responsive>
+                                        <thead>
                                             <tr>
-                                                {/* <td>{JSON.stringify(row)}</td> */}
-                                                <td>
-                                                    <a href={"/#/test-get?testid=" + this.state.testData[row][0]['id']}>
-                                                        {this.state.testData[row][0]['id']}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['details']}
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['schedule']}
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['duration']}
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['start_time']}
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['end_time']}
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['no_mandatory_questions']}
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['deleted'] ? this.state.testData[row][0]['deleted']: 0}
-                                                </td>
-                                                <td>
-                                                    {this.state.testData[row][0]['customerid']}
-                                                </td>
-                                                {/* <td>
-                                                    {this.state.testData[row][0]['testid']}
-                                                </td> */}
+                                                <th align="right">Test Id</th>
+                                                <th align="right">Details</th>
+                                                <th align="right">Schedule</th>
+                                                <th align="right">Duration</th>
+                                                <th align="right">Start Time</th>
+                                                <th align="right">End Time</th>
+                                                <th align="right">No of Questions</th>
+                                                <th align="right">Deleted</th>
+                                                <th align="right">Customer Id</th>
+                                                {/* <th align="right">Test Id</th> */}
                                             </tr>
-                                        ))}
-                                        </div>
-                                    </tbody>
-                                </Table>
-                                <br/>
-                                <div>
-                                    <ButtonGroup aria-label="Basic example">
-                                        <Button variant="success"onClick={this.handlePrevious}>Previous</Button>
-                                        {
-                                            this.getPages()
-                                        }
-                                        <Button variant="success" onClick={this.handleNext}>Next</Button>
-                                    </ButtonGroup>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    {/* <Col md={1}></Col> */}
-                </Row>
-            </Container>
+                                        </thead>
+                                        <tbody>
+                                            <div class="RowHeight">
+                                            {Object.keys(this.state.testData).map((row) => (
+                                                <tr>
+                                                    {/* <td>{JSON.stringify(row)}</td> */}
+                                                    <td>
+                                                        <a href={"/#/test-get?testid=" + this.state.testData[row][0]['id']}>
+                                                            {this.state.testData[row][0]['id']}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['details']}
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['schedule']}
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['duration']}
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['start_time']}
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['end_time']}
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['no_mandatory_questions']}
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['deleted'] ? this.state.testData[row][0]['deleted']: 0}
+                                                    </td>
+                                                    <td>
+                                                        {this.state.testData[row][0]['customerid']}
+                                                    </td>
+                                                    {/* <td>
+                                                        {this.state.testData[row][0]['testid']}
+                                                    </td> */}
+                                                </tr>
+                                            ))}
+                                            </div>
+                                        </tbody>
+                                    </Table>
+                                    <br/>
+                                    <div>
+                                        <ButtonGroup aria-label="Basic example">
+                                            <Button variant="success"onClick={this.handlePrevious}>Previous</Button>
+                                            {
+                                                this.getPages()
+                                            }
+                                            <Button variant="success" onClick={this.handleNext}>Next</Button>
+                                        </ButtonGroup>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         )
     }
 }

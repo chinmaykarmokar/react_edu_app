@@ -208,7 +208,7 @@ const Home = (props) => {
 					    <Col md={1}></Col>
 					    <Col md={5}>
 					        <HomeCards>
-					            <h3 className = "Header">Stats</h3>
+					            <h3 className = "Header">Reports</h3>
 					            <hr className = "LineStyle"/>
 					            <div style = {{textAlign:"center", fontSize: "50px"}}>
 					                <FaChartBar style = {{color: "navy"}}/>

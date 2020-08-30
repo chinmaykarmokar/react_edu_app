@@ -14,6 +14,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import './UpdateTest.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Navibar from '../../Navibar/Navibar'
 
 // Component Definition:
 
@@ -32,6 +33,7 @@ class UpdateTest extends Component{
 		no_mandatory_questions: 0,
 		test_id: "",
 		qna: [],
+		update_qna: [],
 		qna_dictionary: {},
 		loading: false,
 		steps: [
@@ -54,7 +56,20 @@ class UpdateTest extends Component{
         } catch (e) {
             return null;
         }
-    };
+	};
+	
+	notify = (notify_type, notify_msg) => {
+        if(notify_type == 'error'){
+            toast.error(notify_msg, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+        if(notify_type == 'success'){
+            toast.success(notify_msg, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
 
 	onFetchTest = () => {
 		// alert('d');
@@ -90,6 +105,62 @@ class UpdateTest extends Component{
 		})
 		.catch(error => {
 			console.log(error.response);
+
+			// if(error.response['status'] == 401) {
+			// 	window.alert('Failed Login');
+			// }
+		});
+	}
+
+	onSubmitAnswer = () => {
+
+        const token = window.sessionStorage.getItem('token');
+		const headers = {
+			'Content-Type': 'application/json',
+			'Authorization': token
+		}
+        const testId = this.state.test_id;
+
+		const url = 'http://localhost:5000/edu/v1/tests/mod-test?testid=' + testId
+		
+		Object.keys(this.state.qna_dictionary).map((question_key) => (
+            this.state.update_qna.push(
+                {
+					_id: this.state.qna_dictionary[question_key]._id,
+                    question: this.state.qna_dictionary[question_key].question,
+                    options: this.state.qna_dictionary[question_key].options,
+                    answer: this.state.qna_dictionary[question_key].answer,
+                }
+            )
+        ))
+        console.log(this.state.qna);
+
+		const postData = JSON.stringify({
+			"start_time":this.state.start_time,
+			"end_time": this.state.end_time,
+			"details": this.state.details,
+			"customerid": this.state.customerId,
+			"no_mandatory_questions": parseInt(this.state.no_mandatory_questions),
+			"schedule": this.state.schedule,
+			"qna": this.state.update_qna,
+			"duration": parseFloat(this.state.duration)
+		})
+		console.log(postData);
+
+        axios.put(url, postData, {headers: headers})
+		.then(response =>{
+			// console.log([response['data']["test_data"]["total"]]);
+
+			if(response['status'] == 200) {
+				this.notify('success', 'Test Updated Successfully');
+				this.setState({showTestIdForm: true});
+				this.setState({showTestModForm: false});
+				this.setState({testId: ''});
+			}
+		})
+		.catch(error => {
+			console.log(error.response);
+			this.notify('error', error.response.data['message']);
 
 			// if(error.response['status'] == 401) {
 			// 	window.alert('Failed Login');
@@ -133,11 +204,12 @@ class UpdateTest extends Component{
 	    }
 	}
 
-	selectAnswer = (answer_id, answer_index) => {
-	    // window.alert(answer_id)
+	selectAnswer = (answer_id, question_id, answer_index) => {
+		console.log(answer_id);
+		console.log(answer_index);
 	    let r = answer_id[1]
-	    this.state.qna_dictionary['Q'+r] = {}
-	    this.state.qna_dictionary['Q'+r].options = []
+	    this.state.qna_dictionary[question_id] = {}
+	    this.state.qna_dictionary[question_id].options = []
 
 	    for(let i=1; i<5; i++){
 	        let id = `A${r}${i}`
@@ -148,13 +220,14 @@ class UpdateTest extends Component{
 
 	            // Push Question and Corresponding Answer to qna_dictionary:
 
-	            this.state.qna_dictionary['Q'+r].question = document.getElementById('Q'+r).innerHTML
-	            this.state.qna_dictionary['Q'+r].answer = document.getElementById(id).innerHTML
-	            this.state.qna_dictionary['Q'+r].options.push(document.getElementById(id).innerHTML);
+				this.state.qna_dictionary[question_id]._id = question_id;
+	            this.state.qna_dictionary[question_id].question = document.getElementById(question_id).innerHTML
+	            this.state.qna_dictionary[question_id].answer = document.getElementById(id).innerHTML
+	            this.state.qna_dictionary[question_id].options.push(document.getElementById(id).innerHTML);
 	        }
 	        else{
 	            document.getElementById(id).style.backgroundColor = '#ffffff';
-	            this.state.qna_dictionary['Q'+r].options.push(document.getElementById(id).innerHTML);
+	            this.state.qna_dictionary[question_id].options.push(document.getElementById(id).innerHTML);
 	        }
 	    }
 	    console.log(this.state.qna_dictionary);
@@ -170,6 +243,7 @@ class UpdateTest extends Component{
 	render(){
 		return (
 			<div>
+				<Navibar/>
 				<Container fluid>
 				    {
 				    	this.state.showTestIdForm?
@@ -178,13 +252,14 @@ class UpdateTest extends Component{
 					    	<Col md={4} style = {{}}>
 					    		<br/>
 		    		    		<br/>
-		    		    		<div>
-		    		    		    <h3 align="center">Modify Existing Test Data</h3>
-		    		    		    <hr className = "Line"/>
-		    		    		</div>
-		    		    		<br/>
 		    		    		<Card className="TestDetails">
 		    		    			<Card.Body>
+									<br/>
+									<div>
+										<h3 align="center">Modify Existing Test Data</h3>
+										<hr className = "Line"/>
+		    		    			</div>
+		    		    			<br/>
 							    		<Form style = {{textAlign: "left", padding: "10px"}}>
 							    		    <div>
 							    		        <Form.Group controlId="formBasicEmail">
@@ -356,16 +431,16 @@ class UpdateTest extends Component{
 													    {row.question}
 													    </Card.Text>
 													    <ListGroup variant="flush">
-													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+1, 1)} id={'A'+(index+1)+1}>
+													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+1, row._id, 1)} id={'A'+(index+1)+1}>
 													        {row.option1}
 													        </ListGroup.Item>
-													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+2, 2)} id={'A'+(index+1)+2}>
+													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+2, row._id, 2)} id={'A'+(index+1)+2}>
 													        {row.option2}
 													        </ListGroup.Item>
-													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+3, 3)} id={'A'+(index+1)+3}>
+													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+3, row._id, 3)} id={'A'+(index+1)+3}>
 													        {row.option3}
 													        </ListGroup.Item>
-													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+4, 4)} id={'A'+(index+1)+4}>
+													        <ListGroup.Item contentEditable onClick={() => this.selectAnswer('A'+(index+1)+4, row._id, 4)} id={'A'+(index+1)+4}>
 													        {row.option4}
 													        </ListGroup.Item>
 													    </ListGroup>

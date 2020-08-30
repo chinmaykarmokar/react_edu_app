@@ -12,6 +12,7 @@ import Spinner from '../../../Spinner/Spinner';
 import { BsCloudDownload } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import './SingleTest.css'
+import Navibar from '../../../Navibar/Navibar'
 
 class SingleTest extends Component{
 
@@ -111,22 +112,24 @@ class SingleTest extends Component{
     render(){
         return(
             this.state.loading ? <Spinner/> :
-            <div className = "ParentDiv">
+            <div>
+                <Navibar/>
                 <Container fluid="md">
-                    <Row>
-                        <Col md={1}></Col>
-                        <Col md={10}>
-                            {/* <Card className="TestDetails">
-                                <Card.Body>Test Details:</Card.Body>
-                            </Card> */}
-                            <h4>Test Details:</h4>
-                            <br></br>
-                            <hr className="LoginLine"/>
-                        </Col>
-                        <Col md={1}></Col>
-                    </Row>
-                    <br></br>
-                    <Card className="TestDetailsBody">
+                    <Card className="TestDetails">
+                        <Row>
+                            <Col md={1}></Col>
+                            <Col md={10}>
+                                {/* <Card className="TestDetails">
+                                    <Card.Body>Test Details:</Card.Body>
+                                </Card> */}
+                                <h4>Test Details:</h4>
+                                <br></br>
+                                <hr className="LoginLine"/>
+                            </Col>
+                            <Col md={1}></Col>
+                        </Row>
+                        <br></br>
+                    
                         <Row>
                             <Col md={1}></Col>
                             <Col md={5}>
@@ -172,7 +175,6 @@ class SingleTest extends Component{
                         <br></br>
                         <Row>
                             <Col md={1}></Col>
-                            {/* <Col md={7}></Col> */}
                             <Col md={10} style={{"textAlign": "center"}}>
                                 <Button variant="success" onClick={this.downloadTestData}>
                                     <BsCloudDownload style={{"padding": "5px", "fontSize": "30px"}}/>
@@ -181,6 +183,7 @@ class SingleTest extends Component{
                             </Col>
                             <Col md={1}></Col>
                         </Row>
+                        <br/>
                     </Card>
                 </Container>
             </div>

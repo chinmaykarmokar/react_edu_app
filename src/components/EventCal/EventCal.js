@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment';
+import Navibar from '../Navibar/Navibar'
  
 const localizer = momentLocalizer(moment);
 
@@ -24,7 +25,7 @@ const localizer = momentLocalizer(moment);
 
 class EventCal extends Component {
     state = {
-        loading: false,
+        loading: true,
         myEventsList: [
             {
                 title: 'New Test',
@@ -36,37 +37,46 @@ class EventCal extends Component {
         ],
     }
 
+    componentDidMount(){
+        setTimeout(() => {
+            this.setState({loading: false});
+          }, 1000);
+    }
+
     render(){
         return(
             <div>
             {
                 this.state.loading ? <Spinner/> :
-                <Container fluid="md">
-                    <Row>
-				        <Col md={1}></Col>
-				        <Col md={10}>
-				            <h4>Events List:</h4>
-				            <br></br>
-				            <hr className="LoginLine"/>
-				        </Col>
-				        <Col md={1}></Col>
-				    </Row>
-				    <Row>
-				        <Col md={12}>
-                            <Card className="CardLayout">
-				        		<Card.Body>
-                                    <Calendar
-                                        localizer={localizer}
-                                        events={this.state.myEventsList}
-                                        startAccessor="start"
-                                        endAccessor="end"
-                                        style={{ height: 500 }}
-                                    />
-                                </Card.Body>
-				        	</Card>
-                        </Col>
-                    </Row>
-                </Container>
+                <div>
+                    <Navibar/>
+                    <Container fluid="md">
+                        <Card className="Card">
+                            <Card.Body>
+                                <Row>
+                                    <Col md={1}></Col>
+                                    <Col md={10}>
+                                        <h4>Events List:</h4>
+                                        <br></br>
+                                        <hr className="LoginLine"/>
+                                    </Col>
+                                    <Col md={1}></Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <Calendar
+                                            localizer={localizer}
+                                            events={this.state.myEventsList}
+                                            startAccessor="start"
+                                            endAccessor="end"
+                                            style={{ height: 500 }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Card.Body>
+                        </Card>
+                    </Container>
+                </div>
             }
             </div>
         )

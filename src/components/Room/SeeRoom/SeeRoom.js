@@ -24,6 +24,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import Navibar from '../../Navibar/Navibar'
 
 am4core.useTheme(am4themes_animated);
 
@@ -170,7 +171,7 @@ class SeeRoom extends Component{
         //     // children.push(Object.assign({}, {name: 'room.id', value: 10}))
         // ))
         for(let j=0; j<this.state.roomData.length ;j++){
-                children.push({
+            children.push({
                 name: this.state.roomData[j].room_name,
                 value: this.state.roomData[j].limit,
                 id: this.state.roomData[j].room_id
@@ -283,31 +284,32 @@ class SeeRoom extends Component{
                 {
                     this.state.loading? <Spinner/>:
                     <div>
+                        <Navibar/>
                         <Container>
                             <Row>
                                 <Col md={12}>
                                     <br/>
-                                    <br/>
-                                    <br/>
-                                    <div align="center">
-                                        <h3>Room's List:</h3>
-                                        <hr className = "Line"/>
-                                    </div>
-                                    <Card>
+                                    <Card className="Card">
                                         <Card.Body>
+                                            <br/>
+                                            {/* <br/> */}
+                                            <div align="center">
+                                                <h3>Room's List:</h3>
+                                                <hr className = "Line"/>
+                                            </div>
                                             <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+                                            <br/>
+                                            <div>
+                                                <ButtonGroup aria-label="Basic example">
+                                                    <Button variant="success"onClick={this.handlePrevious}>Previous</Button>
+                                                    {
+                                                        this.getPages()
+                                                    }
+                                                    <Button variant="success" onClick={this.handleNext}>Next</Button>
+                                                </ButtonGroup>
+                                            </div>
                                         </Card.Body>
                                     </Card>
-                                    <br/>
-                                    <div>
-                                        <ButtonGroup aria-label="Basic example">
-                                            <Button variant="success"onClick={this.handlePrevious}>Previous</Button>
-                                            {
-                                                this.getPages()
-                                            }
-                                            <Button variant="success" onClick={this.handleNext}>Next</Button>
-                                        </ButtonGroup>
-                                    </div>
                                 </Col>
                             </Row>
                         </Container>

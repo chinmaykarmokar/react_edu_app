@@ -1,0 +1,7 @@
+.Card{
+    border: none;
+    box-sizing: border-box;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+}
