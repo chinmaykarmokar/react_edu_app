@@ -3,13 +3,13 @@ import Home from './Home';
 import Profile from './Profile';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
-// import Tab from '@material-ui/core/Tab';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import './HomeUI.css';
-// import { HashRouter, Switch, Route, Link } from "react-router-dom";
+import Nav from 'react-bootstrap/Nav'
 import Spinner from '../Spinner/Spinner';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class HomeUI extends Component{
 
@@ -114,9 +114,26 @@ class HomeUI extends Component{
 		return(
 			this.state.loading ? <Spinner/> :
 			    <div className = "Home">
-					{/* <h3 className = "Header" id="userName">Welcome, {this.state['userName']}</h3>
-					<hr className = "LineStyleTop"/> */}
-					{/* <br/> */}
+					
+					<br/>
+					<Row>
+						<Col md={4}></Col>
+						<Col md={4}>
+						<Nav justify variant="pills" defaultActiveKey="/home">
+							<Nav.Item>
+								<Nav.Link eventKey="home">Home</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link eventKey="profile">Profile</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link eventKey="billing">Billing</Nav.Link>
+							</Nav.Item>
+						</Nav>
+						</Col>
+						<Col md={4}></Col>
+					</Row>
+
 					<div style = {{textAlign: "center"}}>
 						<ButtonGroup size="lg" className="mb-2">
 						    <Button 
