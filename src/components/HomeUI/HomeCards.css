@@ -1,11 +1,22 @@
 .HomeCardLayout{
-	width: 100%;
+	/* width: 100%; */
+	transition: 0.2s;
 	height: 170px;
 	box-sizing: border-box;
-	border: none;
-	background-color: #f0f5f5;
-	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-	border-radius: 20px;
+	border: 2px solid white;
+	background-color: #fff;
+	margin: 10px auto;
+}
+
+.HomeCardLayout:hover{
+	/* width: 100%; */
+	transition: 0.5s;
+	height: 170px;
+	box-sizing: border-box;
+	border: 2px solid #83f52c;
+	background-color: #fff;
+	/* box-shadow: 0px 0px 10px rgba(0,0,0,0.2); */
+	border-radius: 10px;
 	margin: 10px auto;
 }
 

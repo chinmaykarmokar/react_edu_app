@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FaCalendarAlt } from "react-icons/fa";
+import Card from 'react-bootstrap/Card';
+import { FaCalendarAlt, FaGooglePlus } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
 import { FaChartBar } from "react-icons/fa";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { FaGooglePlus } from "react-icons/fa";
+import { FaGooglePlusG } from "react-icons/fa";
 import { FaCogs } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
@@ -26,6 +27,11 @@ const Home = (props) => {
 				props.showTestMenu ?
 				<div>
 					<Container>
+						<Row>
+							<Col>
+							<Card style = {{border:"none", boxShadow:"0px 0px 10px rgba(0,0,0,0.2)"}}>
+								<Card.Body>
+								<Container>
 						<Row>
 						<Col md={1}></Col>
 						<Col md={5}>
@@ -81,6 +87,12 @@ const Home = (props) => {
 						<Col md={1}></Col>
 						</Row>
 					</Container>
+								</Card.Body>
+							</Card>
+							</Col>
+							
+						</Row>
+					</Container>
 				</div>
 				: null
 			}
@@ -89,58 +101,70 @@ const Home = (props) => {
 				<div>
 					<Container>
 						<Row>
-						<Col md={1}></Col>
-						<Col md={5}>
-							<a href="/#/room-create">
-							<HomeCards className = "EventCard">
-								<h3 className = "Header">Create Rooms</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaPlus style = {{color: "navy"}}/>
-								</div>  
-							</HomeCards>
-							</a>
-						</Col>
-						<Col md={5}>
-						<a href="/#/room-list">
-							<HomeCards>
-								<h3 className = "Header">See Rooms</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaRegListAlt style = {{color: "navy"}}/>
-								</div>
-							</HomeCards>
-						</a>
-						</Col>
-						<Col md={1}></Col>
-						</Row>
-					</Container>
-					<Container>
-						<Row>
-						<Col md={1}></Col>
-						<Col md={5}>
-						<a href="/#/room-mod">
-							<HomeCards>
-								<h3 className = "Header">Update Rooms</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaPencilAlt style = {{color: "navy"}}/>
-								</div>
-							</HomeCards>
-						</a>
-						</Col>
-						<Col md={5}>
-							<a href="/#/room-del">
-								<HomeCards>
-									<h3 className = "Header">Delete Rooms</h3>
-									<hr className = "LineStyle"/>
-									<div style = {{textAlign:"center", fontSize: "50px"}}>
-										<FaGooglePlus style = {{color: "navy"}}/>
-									</div>
-								</HomeCards>
-							</a>
-						</Col>
-						<Col md={1}></Col>
+							<Col>
+								<Card style = {{border:"none", boxShadow:"0px 0px 10px rgba(0,0,0,0.2)"}}>
+									<Card.Body>
+										<Container>
+											<Row>
+												<Col md={1}></Col>
+												<Col md={5}>												
+													<a href="/#/room-create">
+													<HomeCards className = "EventCard">
+														<div style = {{textAlign:"left", padding:"10px"}}>
+															<FaPlus style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Create Rooms</h3>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>Create room</h6>
+														</div>
+													</HomeCards>
+													</a>
+												</Col>
+												<Col md={5}>
+													<a href="/#/room-list">
+													<HomeCards className = "EventCard">
+														<div style = {{textAlign:"left", padding:"10px"}}>
+															<FaRegListAlt style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>See Rooms</h3>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														</div>
+													</HomeCards>								
+													</a>
+												</Col>
+												<Col md={1}></Col>
+											</Row>
+										</Container>
+										<Container>
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+											<a href="/#/room-mod">
+											<HomeCards className = "EventCard">
+												<div style = {{textAlign:"left", padding:"10px"}}>
+													<FaPencilAlt style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+													<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Update Rooms</h3>
+													<h6 style = {{marginLeft:"70px", color:"grey"}}>Create room</h6>
+												</div>
+											</HomeCards>
+												
+											</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/room-del">
+												<HomeCards className = "EventCard">
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<FaGooglePlusG style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Delete Rooms</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Delete room</h6>
+													</div>
+												</HomeCards>
+													
+												</a>
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+										</Container>
+									</Card.Body>
+								</Card>
+							</Col>
 						</Row>
 					</Container>
 				</div>
@@ -151,81 +175,117 @@ const Home = (props) => {
 				<div>
 					<Container>
 						<Row>
-						<Col md={1}></Col>
-						<Col md={5}>
-							<a href="/#/test-menu">
-							<HomeCards className = "EventCard">
-								<h3 className = "Header">Tests</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaBookOpen style = {{color: "navy"}}/>
-								</div>  
-							</HomeCards>
-							</a>
-						</Col>
-						<Col md={5}>
-							<a href="/#/event-list">
-							<HomeCards>
-								<h3 className = "Header">Events</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaRegCalendarAlt style = {{color: "navy"}}/>
-								</div>
-							</HomeCards>
-							</a>
-						</Col>
-						<Col md={1}></Col>
+							<Col>
+								<Card style = {{border:"none", boxShadow:"0px 0px 10px rgba(0,0,0,0.2)"}}>
+  									<Card.Body>
+									  	<Container>
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+												<a href="/#/test-menu">
+													<HomeCards className = "EventCard">
+														<div style = {{textAlign:"left", padding:"10px"}}>
+															<FaBookOpen style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Tests</h3>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														</div>
+													</HomeCards>
+												</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/event-list">
+												<HomeCards>
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<FaRegCalendarAlt style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Events</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+										</Container>
+										<Container>
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+												<a href="/#/room-menu">
+												<HomeCards>
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<FaUsers style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Rooms</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+													{/* <h3 className = "Header">Rooms</h3>
+													<hr className = "LineStyle"/>
+													<div style = {{textAlign:"center", fontSize: "50px"}}>
+														<FaUsers style = {{color: "navy"}}/>
+													</div> */}
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/room-menu">
+												<HomeCards>													
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<FaGooglePlusG style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Contacts</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+													{/* <h3 className = "Header">Contacts</h3>
+													<hr className = "LineStyle"/>
+													<div style = {{textAlign:"center", fontSize: "50px"}}>
+														<FaGooglePlus style = {{color: "navy"}}/>
+													</div> */}
+												</HomeCards>
+												</a>							
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+										</Container>
+										<Container>
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+												<a href="/#/room-menu">
+												<HomeCards>													
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<FaChartBar style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Reports</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+													{/* <h3 className = "Header">Contacts</h3>
+													<hr className = "LineStyle"/>
+													<div style = {{textAlign:"center", fontSize: "50px"}}>
+														<FaGooglePlus style = {{color: "navy"}}/>
+													</div> */}
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/room-menu">
+												<HomeCards>													
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<FaCogs style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Settings</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+													{/* <h3 className = "Header">Contacts</h3>
+													<hr className = "LineStyle"/>
+													<div style = {{textAlign:"center", fontSize: "50px"}}>
+														<FaGooglePlus style = {{color: "navy"}}/>
+													</div> */}
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+										</Container>
+									</Card.Body>
+								</Card>
+							</Col>
 						</Row>
-					</Container>
-					<Container>
-						<Row>
-						<Col md={1}></Col>
-						<Col md={5}>
-							<a href="/#/room-menu">
-							<HomeCards>
-								<h3 className = "Header">Rooms</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaUsers style = {{color: "navy"}}/>
-								</div>
-							</HomeCards>
-							</a>
-						</Col>
-						<Col md={5}>
-							<HomeCards>
-								<h3 className = "Header">Contacts</h3>
-								<hr className = "LineStyle"/>
-								<div style = {{textAlign:"center", fontSize: "50px"}}>
-									<FaGooglePlus style = {{color: "navy"}}/>
-								</div>
-							</HomeCards>
-						</Col>
-						<Col md={1}></Col>
-						</Row>
-					</Container>
-					<Container>
-						<Row>
-					    <Col md={1}></Col>
-					    <Col md={5}>
-					        <HomeCards>
-					            <h3 className = "Header">Reports</h3>
-					            <hr className = "LineStyle"/>
-					            <div style = {{textAlign:"center", fontSize: "50px"}}>
-					                <FaChartBar style = {{color: "navy"}}/>
-					            </div>  
-					        </HomeCards>
-					    </Col>
-					    <Col md={5}>
-					        <HomeCards>
-					            <h3 className = "Header">Settings</h3>
-					            <hr className = "LineStyle"/>
-					            <div style = {{textAlign:"center", fontSize: "50px"}}>
-					                <FaCogs style = {{color: "navy"}}/>
-					            </div>
-					        </HomeCards>
-					    </Col>
-					    <Col md={1}></Col>
-					    </Row>
 					</Container>
 				</div>
 				: null
