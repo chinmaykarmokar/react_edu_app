@@ -10,6 +10,7 @@ import Spinner from '../Spinner/Spinner';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Navibar from '../Navibar/Navibar'
 
 class HomeUI extends Component{
 
@@ -113,86 +114,39 @@ class HomeUI extends Component{
 	render(){
 		return(
 			this.state.loading ? <Spinner/> :
-			    <div className = "Home">
-					
+			<div>
+				<Navibar/>
+			
+				<div className = "Home">
 					<br/>
 					<Row>
 						<Col md={4}></Col>
 						<Col md={4}>
-						<Nav justify variant="pills" defaultActiveKey="/home">
-							<Nav.Item>
-								<Nav.Link eventKey="home">Home</Nav.Link>
+						<Nav justify variant="Nav" defaultActiveKey="/home">
+							<Nav.Item >
+								<Nav.Link className="Nav active" eventKey="home" onClick = {this.handleHome}>Home</Nav.Link>
 							</Nav.Item>
 							<Nav.Item>
-								<Nav.Link eventKey="profile">Profile</Nav.Link>
+								<Nav.Link className="Nav" eventKey="profile" onClick = {this.handleProfile}>Profile</Nav.Link>
 							</Nav.Item>
 							<Nav.Item>
-								<Nav.Link eventKey="billing">Billing</Nav.Link>
+								<Nav.Link className="Nav" eventKey="billing">Billing</Nav.Link>
 							</Nav.Item>
 						</Nav>
 						</Col>
 						<Col md={4}></Col>
 					</Row>
 
-					<div style = {{textAlign: "center"}}>
-						<ButtonGroup size="lg" className="mb-2">
-						    <Button 
-						    	onClick = {this.handleHome}
-						    	style = {{
-						    		border:"none", 
-					    			color:"#fff",
-					    			width:"200px", 
-					    			padding:"20px",
-					    			fontSize:"15px",
-					    			backgroundColor: "navy",
-					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
-					    			borderTopLeftRadius: "50px",
-					    			borderBottomLeftRadius: "50px",
-						    	}}
-						    >
-						    	Home
-						    </Button>
-						    <Button 
-						    	onClick = {this.handleProfile}
-						    	style = {{
-						    		border:"none", 
-					    			color:"#fff",
-					    			width:"200px", 
-					    			padding:"20px",
-					    			backgroundColor: "navy",
-					    			fontSize:"15px",
-					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)"
-						    	}}
-						    >
-						    	Profile
-						    </Button>
-						    <Button
-						    	style = {{
-						    		border:"none", 
-						    		color:"#fff",
-						    		width:"200px", 
-						    		padding:"20px",
-						    		backgroundColor: "navy",
-						    		fontSize:"15px",
-						    		boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
-						    		borderTopRightRadius: "50px",
-						    		borderBottomRightRadius: "50px",
-						    	}}
-						    >
-						    	Billing
-						    </Button>
-						</ButtonGroup>
-					</div>
 					<br/>
-					<h3 className = "Header" id="userName">Welcome, {this.state['userName']}</h3>
-					<hr className = "LineStyleTop"/>
+					{/* <h3 className = "Header" id="userName">Welcome, {this.state['userName']}</h3>
+					<hr className = "LineStyleTop"/>*/}
 					<br/>
 					<div>
 						{this.state.showHome ?
-						 	<Home
-						 		showHomeMenu={true}
-						 	/> :
-						 	null
+							<Home
+								showHomeMenu={true}
+							/> :
+							null
 						}
 						{this.state.showProfile ?
 							<Profile 
@@ -204,10 +158,11 @@ class HomeUI extends Component{
 								noFreeTrial={this.state['noFreeTrial']}
 								createdDate={this.state['createdDate']}
 							/> :
-						   	null
+							null
 						} 
 					</div>			       
-			    </div>	
+				</div>
+			</div>
 		)
 	}
 }

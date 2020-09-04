@@ -15,3 +15,13 @@
 #userName {
 	text-transform: capitalize;
 }
+
+.Nav{
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.active, .Nav:hover {
+	border-bottom: 1.5px solid blue;
+}
