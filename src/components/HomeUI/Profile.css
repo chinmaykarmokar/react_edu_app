@@ -161,3 +161,11 @@ h4, h5{
 	width: 40%;
 	border: 1px solid navy;
 }
+
+.Card1{
+    border: none;
+    box-sizing: border-box;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 2vh;
+	margin-bottom: 3vh;
+}

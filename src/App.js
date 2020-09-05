@@ -20,7 +20,9 @@ import SingleRoom from './components/Room/SeeRoom/SingleRoom/SingleRoom'
 import CreateRoom from './components/Room/CreateRoom/CreateRoom'
 import UpdateRoom from './components/Room/UpdateRoom/UpdateRoom'
 import DeleteRoom from './components/Room/DeleteRoom/DeleteRoom'
-// import SingleRoom from './components/Room/SeeRoom/SingleRoom/SingleRoom'
+import SeeContact from './components/GoogleContacts/SeeContact/SeeContact'
+import ContactMenu from './components/GoogleContacts/ContactMenu/ContactMenu'
+import CreateContact from './components/GoogleContacts/CreateContact/CreateContact'
 import EventCal from './components/EventCal/EventCal'
 import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import './App.css';
@@ -56,6 +58,8 @@ class App extends Component{
                         <Route path = "/room-get" component = {SingleRoom}></Route>
                         <Route path = "/room-mod" component = {UpdateRoom}></Route>
                         <Route path = "/room-del" component = {DeleteRoom}></Route>
+                        <Route path = "/contact-menu" component = {ContactMenu}></Route>
+                        <Route path = "/contact-create" component = {CreateContact}></Route>
                     </Switch>
                 </div>
             </HashRouter> 

@@ -13,6 +13,9 @@ import { FaGooglePlusG } from "react-icons/fa";
 import { FaCogs } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
+import { MdPermContactCalendar } from "react-icons/md"
+import { MdPersonPin } from "react-icons/md"
+import { MdClose } from "react-icons/md"
 import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import HomeCards from './HomeCards';
 // import Button from '@material-ui/core/Button';
@@ -79,7 +82,7 @@ const Home = (props) => {
 									<h3 className = "Header">Delete Tests</h3>
 									<hr className = "LineStyle"/>
 									<div style = {{textAlign:"center", fontSize: "50px"}}>
-										<FaGooglePlus style = {{color: "navy"}}/>
+										<MdClose style = {{color: "navy"}}/>
 									</div>
 								</HomeCards>
 							</a>
@@ -144,19 +147,17 @@ const Home = (props) => {
 													<h6 style = {{marginLeft:"70px", color:"grey"}}>Create room</h6>
 												</div>
 											</HomeCards>
-												
 											</a>
 											</Col>
 											<Col md={5}>
 												<a href="/#/room-del">
 												<HomeCards className = "EventCard">
 													<div style = {{textAlign:"left", padding:"10px"}}>
-														<FaGooglePlusG style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<MdClose style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Delete Rooms</h3>
 														<h6 style = {{marginLeft:"70px", color:"grey"}}>Delete room</h6>
 													</div>
 												</HomeCards>
-													
 												</a>
 											</Col>
 											<Col md={1}></Col>
@@ -187,7 +188,7 @@ const Home = (props) => {
 														<div style = {{textAlign:"left", padding:"10px"}}>
 															<FaBookOpen style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Tests</h3>
-															<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>manage tests</h6>
 														</div>
 													</HomeCards>
 												</a>
@@ -198,7 +199,7 @@ const Home = (props) => {
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<FaRegCalendarAlt style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Events</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>manage events</h6>
 													</div>
 												</HomeCards>
 												</a>
@@ -215,7 +216,7 @@ const Home = (props) => {
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<FaUsers style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Rooms</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>manage rooms</h6>
 													</div>
 													{/* <h3 className = "Header">Rooms</h3>
 													<hr className = "LineStyle"/>
@@ -226,12 +227,12 @@ const Home = (props) => {
 												</a>
 											</Col>
 											<Col md={5}>
-												<a href="/#/room-menu">
+												<a href="/#/contact-menu">
 												<HomeCards>													
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<FaGooglePlusG style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Contacts</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>manage contacts</h6>
 													</div>
 													{/* <h3 className = "Header">Contacts</h3>
 													<hr className = "LineStyle"/>
@@ -248,18 +249,13 @@ const Home = (props) => {
 											<Row>
 											<Col md={1}></Col>
 											<Col md={5}>
-												<a href="/#/room-menu">
+												<a href="/#/stats">
 												<HomeCards>													
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<FaChartBar style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Reports</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>fetch/download reports</h6>
 													</div>
-													{/* <h3 className = "Header">Contacts</h3>
-													<hr className = "LineStyle"/>
-													<div style = {{textAlign:"center", fontSize: "50px"}}>
-														<FaGooglePlus style = {{color: "navy"}}/>
-													</div> */}
 												</HomeCards>
 												</a>
 											</Col>
@@ -269,13 +265,8 @@ const Home = (props) => {
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<FaCogs style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Settings</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>change app settings</h6>
 													</div>
-													{/* <h3 className = "Header">Contacts</h3>
-													<hr className = "LineStyle"/>
-													<div style = {{textAlign:"center", fontSize: "50px"}}>
-														<FaGooglePlus style = {{color: "navy"}}/>
-													</div> */}
 												</HomeCards>
 												</a>
 											</Col>
@@ -290,7 +281,78 @@ const Home = (props) => {
 				</div>
 				: null
 			}
-			
+			{
+				props.showContactMenu ?
+				<div>
+					<Container>
+						<Row>
+							<Col>
+								<Card style = {{border:"none", boxShadow:"0px 0px 10px rgba(0,0,0,0.2)"}}>
+									<Card.Body>
+										<Container>
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+												<a href="/#/contact-create">
+													<HomeCards className = "EventCard">
+														<div style = {{textAlign:"left", padding:"10px"}}>
+															<MdPermContactCalendar style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Add Contact</h3>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														</div>
+													</HomeCards>
+												</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/event-list">
+												<HomeCards>
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<FaUsers style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>See Contacts</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+										</Container>
+										<Container>
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+												<a href="/#/room-menu">
+												<HomeCards>
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<MdPersonPin style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Update Contact</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/contact-menu">
+												<HomeCards>													
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<MdClose style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Delete Contact</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+													</div>
+												</HomeCards>
+												</a>							
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+										</Container>
+									</Card.Body>
+								</Card>
+							</Col>
+						</Row>
+					</Container>
+				</div>
+				: null
+			}
 		</div>
 	)
 }

@@ -9,14 +9,15 @@ import Table from 'react-bootstrap/Table'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { toast } from 'react-toastify';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment';
-import Navibar from '../Navibar/Navibar'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav'
+import Navibar from '../Navibar/Navibar';
  
 const localizer = momentLocalizer(moment);
 
@@ -51,6 +52,25 @@ class EventCal extends Component {
                 <div>
                     <Navibar/>
                     <Container fluid="md">
+                        <br/>
+                        <Row>
+                            <Col md={4}></Col>
+                            <Col md={4}>
+                            <Nav justify variant="Nav" defaultActiveKey="/home">
+                                <Nav.Item >
+                                    <Nav.Link className="Nav active" eventKey="home" onClick = {this.handleHome}>Home</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link className="Nav" eventKey="profile" onClick = {this.handleProfile}>Profile</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link className="Nav" eventKey="billing">Billing</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                            </Col>
+                            <Col md={4}></Col>
+                        </Row>
+                        <br/>
                         <Card className="Card">
                             <Card.Body>
                                 <Row>

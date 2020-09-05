@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import Home from '../../HomeUI/Home';
 import Profile from '../../HomeUI/Profile';
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
+import Nav from 'react-bootstrap/Nav'
 import './TestMenu.css';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../../Spinner/Spinner';
-import Navibar from '../../Navibar/Navibar'
+import Navibar from '../../Navibar/Navibar';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class TestMenu extends Component{
 
@@ -80,47 +83,27 @@ class TestMenu extends Component{
 				<div>
 					<Navibar/>
 					<div className = "Home">
-						<div style = {{textAlign: "center"}}>
-							<ButtonGroup size="lg" className="mb-2">
-								<Button 
-									style = {{
-										border:"none", 
-										color:"#fff",
-										width:"200px", 
-										padding:"20px",
-										fontSize:"15px",
-										backgroundColor: "navy",
-										boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
-										borderTopLeftRadius: "50px",
-										borderBottomLeftRadius: "50px",
-									}} onClick = {this.handleHome}>Home</Button>					    	
-								<Button 
-									style = {{
-										border:"none", 
-										color:"#fff",
-										width:"200px", 
-										padding:"20px",
-										backgroundColor: "navy",
-										fontSize:"15px",
-										boxShadow: "0px 0px 10px rgba(0,0,0,0.3)"
-									}} onClick = {this.handleProfile}>Profile</Button>
-								<Button 
-									style = {{
-										border:"none", 
-										color:"#fff",
-										width:"200px", 
-										padding:"20px",
-										backgroundColor: "navy",
-										fontSize:"15px",
-										boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
-										borderTopRightRadius: "50px",
-										borderBottomRightRadius: "50px",
-									}} onClick = {this.handleBilling}>Billing</Button>
-							</ButtonGroup>
-						</div>
 						<br/>
-						<h3 className = "Header" id="userName">Welcome, {this.state['userName']}</h3>
-						<hr className = "LineStyleTop"/>
+						<Row>
+							<Col md={4}></Col>
+							<Col md={4}>
+							<Nav justify variant="Nav" defaultActiveKey="/home">
+								<Nav.Item >
+									<Nav.Link className="Nav active" eventKey="home" onClick = {this.handleHome}>Home</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link className="Nav" eventKey="profile" onClick = {this.handleProfile}>Profile</Nav.Link>
+								</Nav.Item>
+								<Nav.Item>
+									<Nav.Link className="Nav" eventKey="billing">Billing</Nav.Link>
+								</Nav.Item>
+							</Nav>
+							</Col>
+							<Col md={4}></Col>
+						</Row>
+						<br/>
+						{/* <h3 className = "Header" id="userName">Welcome, {this.state['userName']}</h3>
+						<hr className = "LineStyleTop"/> */}
 						<br/>
 						<div>
 							{this.state.showHome ?

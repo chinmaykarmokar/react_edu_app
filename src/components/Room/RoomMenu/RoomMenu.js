@@ -7,6 +7,11 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 // import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import Spinner from '../../Spinner/Spinner';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav'
+import Navibar from '../../Navibar/Navibar';
 
 class TestMenu extends Component{
 
@@ -65,31 +70,7 @@ class TestMenu extends Component{
 		}
 
 		const tokenData = this.parseJwt(token);
-		this.state.userName = tokenData['username']
-		// alert(JSON.stringify(tokenData['username']));
-
-		// const user_id = tokenData['_id']
-		// const url = 'http://localhost:5000/edu/v1/users/teacher/get-user?user=' + user_id
-
-		// const url = 'http://localhost:5000/edu/v1/users/teacher/get-user?user=5f32c46289e2a466fe6b1946'
-
-		// axios.get(url, {headers: headers})
-		// .then(response =>{
-		// 	console.log(response);
-
-		// 	if(response['status'] == 200) {
-		// 		// this.setState({successAlert: true});
-		// 		// this.setState({userName: response['data']['users']['name']});
-		// 		console.log('f')
-		// 	}
-		// })
-		// .catch(error => {
-		// 	console.log(error.response);
-
-		// 	if(error.response['status'] == 401) {
-		// 		window.alert('Failed Login');
-		// 	}
-		// });
+		this.state.userName = tokenData['username'];
 	}
 
 	componentDidMount() {
@@ -108,48 +89,27 @@ class TestMenu extends Component{
 	render(){
 		return(
 			this.state.loading ? <Spinner/> :
+			<div>
+				<Navibar/>
 			    <div className = "Home">
-			    	<div style = {{textAlign: "center"}}>
-						<ButtonGroup size="lg" className="mb-2">
-					    	<Button 
-					    		style = {{
-					    			border:"none", 
-					    			color:"#fff",
-					    			width:"200px", 
-					    			padding:"20px",
-					    			fontSize:"15px",
-					    			backgroundColor: "navy",
-					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
-					    			borderTopLeftRadius: "50px",
-					    			borderBottomLeftRadius: "50px",
-					    		}} onClick = {this.handleHome}>Home</Button>					    	
-					    	<Button 
-					    		style = {{
-					    			border:"none", 
-					    			color:"#fff",
-					    			width:"200px", 
-					    			padding:"20px",
-					    			backgroundColor: "navy",
-					    			fontSize:"15px",
-					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)"
-					    		}} onClick = {this.handleProfile}>Profile</Button>
-					    	<Button 
-					    		style = {{
-					    			border:"none", 
-					    			color:"#fff",
-					    			width:"200px", 
-					    			padding:"20px",
-					    			backgroundColor: "navy",
-					    			fontSize:"15px",
-					    			boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
-					    			borderTopRightRadius: "50px",
-					    			borderBottomRightRadius: "50px",
-					    		}} onClick = {this.handleBilling}>Billing</Button>
-						</ButtonGroup>
-					</div>
-					<br/>
-					<h3 className = "Header" id="userName">Welcome, {this.state['userName']}</h3>
-					<hr className = "LineStyleTop"/>
+			    	<br/>
+					<Row>
+						<Col md={4}></Col>
+						<Col md={4}>
+						<Nav justify variant="Nav" defaultActiveKey="/home">
+							<Nav.Item >
+								<Nav.Link className="Nav active" eventKey="home" onClick = {this.handleHome}>Home</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link className="Nav" eventKey="profile" onClick = {this.handleProfile}>Profile</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link className="Nav" eventKey="billing">Billing</Nav.Link>
+							</Nav.Item>
+						</Nav>
+						</Col>
+						<Col md={4}></Col>
+					</Row>
 					<br/>
 					<div>
 						{this.state.showHome ?
@@ -170,8 +130,9 @@ class TestMenu extends Component{
 							/> :
 						   	null
 						} 
-					</div>			       
-			    </div>	
+					</div>		       
+			    </div>
+			</div>	
 		)
 	}
 }
