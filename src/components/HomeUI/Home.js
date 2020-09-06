@@ -18,7 +18,7 @@ import { MdPersonPin } from "react-icons/md"
 import { MdClose } from "react-icons/md"
 import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import HomeCards from './HomeCards';
-// import Button from '@material-ui/core/Button';
+import { BsPersonCheckFill, BsQuestionCircleFill } from "react-icons/bs";
 import { useSnackbar } from 'react-simple-snackbar'
 // import Spinner from '../../../Spinner/Spinner';
 
@@ -228,6 +228,33 @@ const Home = (props) => {
 														<FaGooglePlusG style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Contacts</h3>
 														<h6 style = {{marginLeft:"70px", color:"grey"}}>manage contacts</h6>
+													</div>
+												</HomeCards>
+												</a>							
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+												<a href="/#/room-menu">
+												<HomeCards>
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<BsPersonCheckFill style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Enroll</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>manage student enrolls</h6>
+													</div>
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/contact-menu">
+												<HomeCards>													
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<BsQuestionCircleFill style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Help</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>get help</h6>
 													</div>
 												</HomeCards>
 												</a>							

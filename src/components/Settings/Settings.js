@@ -105,6 +105,37 @@ class Settings extends Component{
                                                 </Card>
                                             </Col>
                                         </Row>
+                                        <br/>
+                                        <Row>
+                                            <Col md={6}>
+                                                <Card className="Card">
+                                                    <Card.Body>
+                                                        <Card.Title>Theme:</Card.Title>
+                                                        <label class="switch">
+                                                            <input type="checkbox" onClick={this.changeTheme}/>
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                        <Card.Text>
+                                                            {this.state.theme}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                            <Col md={6}>
+                                                <Card className="Card">
+                                                    <Card.Body>
+                                                        <Card.Title>Theme:</Card.Title>
+                                                        <label class="switch">
+                                                            <input type="checkbox" onClick={this.changeTheme}/>
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                        <Card.Text>
+                                                            {this.state.theme}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        </Row>
                                     </Card.Body>
                                 </Card>
                             </Col>

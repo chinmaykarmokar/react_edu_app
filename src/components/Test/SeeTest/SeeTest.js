@@ -127,7 +127,7 @@ class SeeTest extends Component{
     getPages = () => {
         const pagesButtons = []
         console.log(this.state.total)
-        for(let i=1; i<=this.state.total+1; i++) {
+        for(let i=1; i<=this.state.total; i++) {
             pagesButtons.push(
                 <Button variant="primary" onClick={() => this.handleChangePage(i)}>
                     {/* {JSON.stringify(this.state.total)} */}
@@ -169,8 +169,8 @@ class SeeTest extends Component{
                                                 <th align="right">Start Time</th>
                                                 <th align="right">End Time</th>
                                                 <th align="right">No of Questions</th>
-                                                <th align="right">Deleted</th>
-                                                <th align="right">Customer Id</th>
+                                                {/* <th align="right">Deleted</th>
+                                                <th align="right">Customer Id</th> */}
                                                 {/* <th align="right">Test Id</th> */}
                                             </tr>
                                         </thead>
@@ -202,12 +202,12 @@ class SeeTest extends Component{
                                                     <td>
                                                         {this.state.testData[row][0]['no_mandatory_questions']}
                                                     </td>
-                                                    <td>
+                                                    {/* <td>
                                                         {this.state.testData[row][0]['deleted'] ? this.state.testData[row][0]['deleted']: 0}
                                                     </td>
                                                     <td>
                                                         {this.state.testData[row][0]['customerid']}
-                                                    </td>
+                                                    </td> */}
                                                     {/* <td>
                                                         {this.state.testData[row][0]['testid']}
                                                     </td> */}
