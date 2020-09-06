@@ -16,7 +16,7 @@ class Navibar extends Component{
 		return(
 			<div>
 				<Navbar bg="primary" variant="dark">
-					<Navbar.Brand href="/">TestDega</Navbar.Brand>
+					<Navbar.Brand href="/#/home">TestDega</Navbar.Brand>
 					<Nav className="mr-auto">
 						<Nav.Link href="#home">Home</Nav.Link>
 						<Nav.Link href="#features">Features</Nav.Link>

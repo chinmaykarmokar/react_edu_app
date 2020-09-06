@@ -328,8 +328,9 @@ class CreateTest extends Component{
                                     {
                                         this.state.showTestQuestions ?
                                         <div>
-                                            <div>
+                                            <div align="center">
                                                 <h3>Enter Questions Data</h3>
+                                                <br/>
                                                 <h4>Click to Select Correct Answer</h4>
                                                 <hr className = "Line"/>
                                             </div>

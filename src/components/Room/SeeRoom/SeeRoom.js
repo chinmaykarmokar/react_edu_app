@@ -18,14 +18,11 @@ import Button from 'react-bootstrap/Button';
 // import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import Spinner from '../../Spinner/Spinner';
 import { toast } from 'react-toastify';
-// import am4core from '../../../App'
-// import am4plugins_forceDirected from '../../../App';
+import Navibar from '../../Navibar/Navibar'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import Navibar from '../../Navibar/Navibar'
-
 am4core.useTheme(am4themes_animated);
 
 
@@ -136,7 +133,7 @@ class SeeRoom extends Component{
     getPages = () => {
         const pagesButtons = []
         console.log(this.state.total)
-        for(let i=1; i<=this.state.total+1; i++) {
+        for(let i=1; i<=this.state.total; i++) {
             pagesButtons.push(
                 <Button variant="primary" onClick={() => this.handleChangePage(i)}>
                     {/* {JSON.stringify(this.state.total)} */}
@@ -148,8 +145,6 @@ class SeeRoom extends Component{
     }
 
     createChart = () => {
-        // let chart = {series: []}
-        // console.log(am4core.create)
         let chart = am4core.create("chartdiv", am4plugins_forceDirected.ForceDirectedTree);
         let networkSeries = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
 
@@ -163,13 +158,7 @@ class SeeRoom extends Component{
         // }
         
         const children = []
-        // this.state.roomData.map((room, index) => (
-        //     // children.push({
-        //     //     name: 'room.id',
-        //     //     value: 10
-        //     // })
-        //     // children.push(Object.assign({}, {name: 'room.id', value: 10}))
-        // ))
+
         for(let j=0; j<this.state.roomData.length ;j++){
             children.push({
                 name: this.state.roomData[j].room_name,
@@ -187,28 +176,6 @@ class SeeRoom extends Component{
         // console.log(chart.data);
         console.log(this.state.roomData.length);
         console.log(children);
-
-        // chart.data = [
-        //     {
-        //         name: "Teacher",
-        //         children: [
-        //             {
-        //                 name: "First",
-        //                 children: [
-        //                     { name: "A1", value: 100 },
-        //                     { name: "A2", value: 60 }
-        //                 ]
-        //             },
-        //             {
-        //                 name: "Second",
-        //                 children: [
-        //                     { name: "B1", value: 135 },
-        //                     { name: "B2", value: 98 }
-        //                 ]
-        //             },
-        //         ]
-        //     }
-        // ];
 
         networkSeries.dataFields.value = "value";
         networkSeries.dataFields.name = "name";
@@ -251,13 +218,16 @@ class SeeRoom extends Component{
 
             const roomId = event.target.dataItem.dataContext.id;
             console.log(roomId);
-            const token = window.sessionStorage.getItem('token');
-            const tokenData = JSON.parse(atob(token.split('.')[1]));
-            const teacherId = tokenData['_id']
-            // const teacherId = this.state.teacherId;
-            const url = 'http://localhost:3000/#/room-get?room_id='+roomId+'&teacher_id='+teacherId;
-            // window.open(url, '_blank');
-            window.location.href = url;
+
+            if(roomId != undefined){
+                const token = window.sessionStorage.getItem('token');
+                const tokenData = JSON.parse(atob(token.split('.')[1]));
+                const teacherId = tokenData['_id']
+                // const teacherId = this.state.teacherId;
+                const url = 'http://localhost:3000/#/room-get?room_id='+roomId+'&teacher_id='+teacherId;
+                // window.open(url, '_blank');
+                window.location.href = url;
+            }
         });
     }
 
@@ -301,7 +271,7 @@ class SeeRoom extends Component{
                                             <br/>
                                             <div>
                                                 <ButtonGroup aria-label="Basic example">
-                                                    <Button variant="success"onClick={this.handlePrevious}>Previous</Button>
+                                                    <Button variant="success" onClick={this.handlePrevious}>Previous</Button>
                                                     {
                                                         this.getPages()
                                                     }

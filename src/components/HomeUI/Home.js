@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import { FaCalendarAlt, FaGooglePlus } from "react-icons/fa";
+import { FaCalendarAlt, FaGooglePlus, FaRegTrashAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
@@ -218,11 +218,6 @@ const Home = (props) => {
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Rooms</h3>
 														<h6 style = {{marginLeft:"70px", color:"grey"}}>manage rooms</h6>
 													</div>
-													{/* <h3 className = "Header">Rooms</h3>
-													<hr className = "LineStyle"/>
-													<div style = {{textAlign:"center", fontSize: "50px"}}>
-														<FaUsers style = {{color: "navy"}}/>
-													</div> */}
 												</HomeCards>
 												</a>
 											</Col>
@@ -234,11 +229,6 @@ const Home = (props) => {
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Contacts</h3>
 														<h6 style = {{marginLeft:"70px", color:"grey"}}>manage contacts</h6>
 													</div>
-													{/* <h3 className = "Header">Contacts</h3>
-													<hr className = "LineStyle"/>
-													<div style = {{textAlign:"center", fontSize: "50px"}}>
-														<FaGooglePlus style = {{color: "navy"}}/>
-													</div> */}
 												</HomeCards>
 												</a>							
 											</Col>
@@ -260,7 +250,7 @@ const Home = (props) => {
 												</a>
 											</Col>
 											<Col md={5}>
-												<a href="/#/room-menu">
+												<a href="/#/settings-menu">
 												<HomeCards>													
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<FaCogs style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
@@ -298,18 +288,18 @@ const Home = (props) => {
 														<div style = {{textAlign:"left", padding:"10px"}}>
 															<MdPermContactCalendar style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Add Contact</h3>
-															<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>create new contact</h6>
 														</div>
 													</HomeCards>
 												</a>
 											</Col>
 											<Col md={5}>
-												<a href="/#/event-list">
+												<a href="/#/contact-list">
 												<HomeCards>
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<FaUsers style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>See Contacts</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>see contacts</h6>
 													</div>
 												</HomeCards>
 												</a>
@@ -321,23 +311,23 @@ const Home = (props) => {
 											<Row>
 											<Col md={1}></Col>
 											<Col md={5}>
-												<a href="/#/room-menu">
+												<a href="/#/contact-mod">
 												<HomeCards>
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<MdPersonPin style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Update Contact</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>update contact</h6>
 													</div>
 												</HomeCards>
 												</a>
 											</Col>
 											<Col md={5}>
-												<a href="/#/contact-menu">
+												<a href="/#/contact-del">
 												<HomeCards>													
 													<div style = {{textAlign:"left", padding:"10px"}}>
-														<MdClose style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<FaRegTrashAlt style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
 														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Delete Contact</h3>
-														<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>delete contact</h6>
 													</div>
 												</HomeCards>
 												</a>							
