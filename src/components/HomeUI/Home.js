@@ -172,6 +172,78 @@ const Home = (props) => {
 				: null
 			}
 			{
+				props.showEnrollMenu ?
+				<div>
+					<Container>
+						<Row>
+							<Col>
+								<Card style = {{border:"none", boxShadow:"0px 0px 10px rgba(0,0,0,0.2)"}}>
+									<Card.Body>
+										<Container>
+											<Row>
+												<Col md={1}></Col>
+												<Col md={5}>												
+													<a href="/#/enroll-create">
+													<HomeCards className = "EventCard">
+														<div style = {{textAlign:"left", padding:"10px"}}>
+															<FaPlus style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Create Enroll</h3>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>create enroll</h6>
+														</div>
+													</HomeCards>
+													</a>
+												</Col>
+												<Col md={5}>
+													<a href="/#/enroll-list">
+													<HomeCards className = "EventCard">
+														<div style = {{textAlign:"left", padding:"10px"}}>
+															<FaRegListAlt style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+															<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>See Enrolls</h3>
+															<h6 style = {{marginLeft:"70px", color:"grey"}}>Check your tests</h6>
+														</div>
+													</HomeCards>								
+													</a>
+												</Col>
+												<Col md={1}></Col>
+											</Row>
+										</Container>
+										<Container>
+											<Row>
+											<Col md={1}></Col>
+											<Col md={5}>
+											<a href="/#/enroll-mod">
+											<HomeCards className = "EventCard">
+												<div style = {{textAlign:"left", padding:"10px"}}>
+													<FaPencilAlt style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+													<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Update Enroll</h3>
+													<h6 style = {{marginLeft:"70px", color:"grey"}}>Create room</h6>
+												</div>
+											</HomeCards>
+											</a>
+											</Col>
+											<Col md={5}>
+												<a href="/#/enroll-del">
+												<HomeCards className = "EventCard">
+													<div style = {{textAlign:"left", padding:"10px"}}>
+														<MdClose style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
+														<h3 className = "d-inline" style = {{margin:"20px", fontSize:"35px"}}>Delete Enroll</h3>
+														<h6 style = {{marginLeft:"70px", color:"grey"}}>Delete Enrolls</h6>
+													</div>
+												</HomeCards>
+												</a>
+											</Col>
+											<Col md={1}></Col>
+											</Row>
+										</Container>
+									</Card.Body>
+								</Card>
+							</Col>
+						</Row>
+					</Container>
+				</div>
+				: null
+			}
+			{
 				props.showHomeMenu ?
 				<div>
 					<Container>
@@ -238,7 +310,7 @@ const Home = (props) => {
 											<Row>
 											<Col md={1}></Col>
 											<Col md={5}>
-												<a href="/#/room-menu">
+												<a href="/#/enroll-menu">
 												<HomeCards>
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<BsPersonCheckFill style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>
@@ -249,7 +321,7 @@ const Home = (props) => {
 												</a>
 											</Col>
 											<Col md={5}>
-												<a href="/#/contact-menu">
+												<a href="/#/help-menu">
 												<HomeCards>													
 													<div style = {{textAlign:"left", padding:"10px"}}>
 														<BsQuestionCircleFill style = {{color: "navy", fontSize:"50px"}} className = "d-inline float"/>

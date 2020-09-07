@@ -102,8 +102,6 @@ class CreateRoom extends Component{
             const tokenData = this.parseJwt(token)
             const user_id = tokenData['_id']
             this.setState({teacherId:user_id})
-
-			// this.getAccountData();
 		  }, 1000);
 	}
 

@@ -22,6 +22,9 @@ import UpdateRoom from './components/Room/UpdateRoom/UpdateRoom'
 import DeleteRoom from './components/Room/DeleteRoom/DeleteRoom'
 import SeeContact from './components/GoogleContacts/SeeContact/SeeContact'
 import ContactMenu from './components/GoogleContacts/ContactMenu/ContactMenu'
+import EnrollMenu from './components/Enroll/EnrollMenu/EnrollMenu'
+import CreateEnroll from './components/Enroll/CreateEnroll/CreateEnroll'
+import SeeEnroll from './components/Enroll/SeeEnroll/SeeEnroll'
 import CreateContact from './components/GoogleContacts/CreateContact/CreateContact'
 import EventCal from './components/EventCal/EventCal'
 import Settings from './components/Settings/Settings'
@@ -62,6 +65,9 @@ class App extends Component{
                         <Route path = "/contact-menu" component = {ContactMenu}></Route>
                         <Route path = "/contact-create" component = {CreateContact}></Route>
                         <Route path = "/contact-list" component = {SeeContact}></Route>
+                        <Route path = "/enroll-menu" component = {EnrollMenu}></Route>
+                        <Route path = "/enroll-create" component = {CreateEnroll}></Route>
+                        <Route path = "/enroll-list" component = {SeeEnroll}></Route>
                         <Route path = "/settings-menu" component = {Settings}></Route>
                     </Switch>
                 </div>
