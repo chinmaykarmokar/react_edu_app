@@ -18,6 +18,7 @@ import Chart from "react-google-charts";
 import ListGroup from 'react-bootstrap/ListGroup'
 import Stepper from 'react-stepper-horizontal';
 import { BsFillPersonFill } from "react-icons/bs";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import personImg from '../../../assets/bg2.jpg';
 
 class SeeEnroll extends Component{
@@ -94,9 +95,6 @@ class SeeEnroll extends Component{
 
     handleNext = () => {
         const page = this.state.page;
-        this.state.currentStep = this.state.currentStep + 1;
-        this.setState({activeStepData: this.state.chartData[this.state.currentStep]});
-
         if(page <= this.state.total){
             this.handleChangePage(page+1);
         }
@@ -107,16 +105,35 @@ class SeeEnroll extends Component{
     }
 
     handlePrevious = () => {
-        const page = this.state.page;
-        this.state.currentStep = this.state.currentStep - 1;
-        this.setState({activeStepData: this.state.chartData[this.state.currentStep]});
-        
+        const page = this.state.page;   
         if(page > 0){
             this.handleChangePage(page-1);
         }
         else{
             // alert('Limit Receeded')
             this.notify('error', 'You"re on first page');
+        }
+    }
+
+    handleNextStep = () => {
+        // alert(this.state.currentStep)
+        if(this.state.currentStep < Object.keys(this.state.chartData).length - 1){
+            this.state.currentStep = this.state.currentStep + 1;
+            this.setState({activeStepData: this.state.chartData[this.state.currentStep]});
+        }
+        else{
+            this.notify('error', 'You cannot go further');
+        }
+    }
+
+    handlePreviousStep = () => {
+        // alert(this.state.currentStep)
+        if(this.state.currentStep > 0){
+            this.state.currentStep = this.state.currentStep - 1;
+            this.setState({activeStepData: this.state.chartData[this.state.currentStep]});
+        }
+        else{
+            this.notify('error', 'You cannot go back');
         }
     }
 
@@ -212,7 +229,14 @@ class SeeEnroll extends Component{
                                             <hr className = "Line"/>
                                         </div>
                                         <Row>
-                                            <Col md={3}></Col>
+                                            <Col md={1}></Col>
+                                            <Col md={2} align="center" onClick={this.handlePreviousStep} style={{color: "navy", fontSize:"50px"}}>
+                                                <Card className="Card21">
+                                                    <Card.Body>
+                                                        <FaAngleLeft/>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
                                             <Col md={6}>
                                                 <Card className="Card2">
                                                     <Card.Body>
@@ -242,12 +266,19 @@ class SeeEnroll extends Component{
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
-                                            <Col md={3}></Col>
+                                            <Col md={2} align="center" onClick={this.handleNextStep} style={{color: "navy", fontSize:"50px"}}>
+                                                <Card className="Card21">
+                                                    <Card.Body>
+                                                        <FaAngleRight/>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                            <Col md={1}></Col>
                                         </Row>
                                         <br/>
                                         <div>
                                             <ButtonGroup aria-label="Basic example">
-                                                <Button variant="success"onClick={this.handlePrevious}>Previous</Button>
+                                                <Button variant="success" onClick={this.handlePrevious}>Previous</Button>
                                                 {
                                                     this.getPages()
                                                 }

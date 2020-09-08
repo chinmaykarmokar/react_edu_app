@@ -55,7 +55,14 @@ class SingleRoom extends Component{
     }
 
     goToRoom = () => {
-
+		const token = window.sessionStorage.getItem('token');
+		const tokenData = this.parseJwt(token);
+        const urlParams = this.getUrlParams();
+        const roomId = urlParams["room_id"];
+        const teacherId = urlParams["teacher_id"];
+		const url = 'http://localhost:3000/#/roomui-get?room_id='+roomId+'&teacher_id='+teacherId;
+		// window.open(url, '_blank');
+		window.location.href = url;
     }
 
 	getSingleRoom = () => {
@@ -66,9 +73,9 @@ class SingleRoom extends Component{
 		}
         const tokenData = this.parseJwt(token);
         const urlParams = this.getUrlParams();
-        const room_id = urlParams["room_id"];
-        const teacher_id = urlParams["teacher_id"];
-		const url = 'http://localhost:5000/edu/v1/rooms/get-room?teacher_id='+teacher_id+'&room_id='+room_id
+        const roomId = urlParams["room_id"];
+        const teacherId = urlParams["teacher_id"];
+		const url = 'http://localhost:5000/edu/v1/rooms/get-room?teacher_id='+teacherId+'&room_id='+roomId
 
         axios.get(url, {headers: headers})
 		.then(response =>{

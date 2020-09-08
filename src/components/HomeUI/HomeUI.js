@@ -54,7 +54,7 @@ class HomeUI extends Component{
 		} catch (e) {
 			return null;
 		}
-	  };
+	};
 
 	getAccountData = () => {
 		// alert('account');

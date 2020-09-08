@@ -28,6 +28,7 @@ import SeeEnroll from './components/Enroll/SeeEnroll/SeeEnroll'
 import CreateContact from './components/GoogleContacts/CreateContact/CreateContact'
 import EventCal from './components/EventCal/EventCal'
 import Settings from './components/Settings/Settings'
+import RoomUI from './components/RoomUI/RoomUI'
 import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -69,6 +70,7 @@ class App extends Component{
                         <Route path = "/enroll-create" component = {CreateEnroll}></Route>
                         <Route path = "/enroll-list" component = {SeeEnroll}></Route>
                         <Route path = "/settings-menu" component = {Settings}></Route>
+                        <Route path = "/roomui-get" component = {RoomUI}></Route>
                     </Switch>
                 </div>
             </HashRouter> 
