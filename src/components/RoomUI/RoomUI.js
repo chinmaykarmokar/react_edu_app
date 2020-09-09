@@ -12,6 +12,7 @@ import Navibar from '../Navibar/Navibar'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 // Component Definition:
 
@@ -24,6 +25,7 @@ class RoomUI extends Component{
         previous: 0,
         next: 0,
         roomData: [],
+        testData: [],
     }
 
     notify = (notify_type, notify_msg) => {
@@ -47,6 +49,47 @@ class RoomUI extends Component{
         }
     };
 
+    handleChangePage = (No) => {
+        this.setState({loading: true});
+        setTimeout(() => {
+            this.setState({loading: false});
+            
+            let pageNo = parseInt(No);
+            console.log(pageNo);
+            this.setState({pageNo: pageNo});
+            this.getTestData(pageNo);
+          }, 1000);
+    }
+
+    getTestData = (pageNo) => {
+        const token = window.sessionStorage.getItem('token');
+		const headers = {
+			'Content-Type': 'application/json',
+			'Authorization': token
+		}
+        const baseUrl = 'http://localhost:5000/edu/v1/tests/get-test?testid=all&pageno=' + pageNo
+        const params = '&cols=id,details,schedule,duration'
+        const url = baseUrl + params
+
+		axios.get(url, {headers: headers})
+		.then(response =>{
+			console.log([response['data']["test_data"]["total"]]);
+			if(response['status'] == 200) {
+                this.setState({total: response['data']["test_data"]["total"]});
+                this.setState({pageNo: response['data']["test_data"]["pageno"]});
+                this.setState({previous: response['data']["test_data"]["previous"]});
+                this.setState({next: response['data']["test_data"]["next"]});
+                this.setState({testData: response['data']["test_data"]["data"]});
+			}
+		})
+		.catch(error => {
+			console.log(error.response);
+			// if(error.response['status'] == 401) {
+			// 	window.alert('Failed Login');
+			// }
+		});
+    }
+
     getPages = () => {
         const pagesButtons = []
         console.log(this.state.total)
@@ -69,6 +112,7 @@ class RoomUI extends Component{
             const tokenData = this.parseJwt(token)
             const user_id = tokenData['_id']
             this.setState({teacherId:user_id})
+            this.getTestData(1);
 		  }, 1000);
     }
     
@@ -112,8 +156,9 @@ class RoomUI extends Component{
                                     <h3>Test's List:</h3>
                                     <hr className = "Line"/>
                                 </div>
-                                {/* <br/> */}
                                 <Row>
+                                {
+                                    Object.keys(this.state.testData).map((row) => (
                                     <Col md={4} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
                                         <Card className="Card">
                                             <Card.Img 
@@ -122,104 +167,25 @@ class RoomUI extends Component{
                                                 style={{'height': '15vh'}}
                                             />
                                             <Card.Body>
-                                                <Card.Title>Card Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                                                <Card.Title>
+                                                    Details: {this.state.testData[row]['details']}
+                                                </Card.Title>
+                                                <Card.Subtitle className="mb-2 text-muted">
+                                                    Id: {this.state.testData[row]['id']}
+                                                </Card.Subtitle>
                                                 <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
+                                                    Duration: {this.state.testData[row]['duration']}
+                                                </Card.Text>
+                                                <Card.Text>
+                                                    Schedule: {this.state.testData[row]['schedule']}
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
                                     </Col>
-                                    <Col md={4} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
-                                        <Card className="Card">
-                                            <Card.Img 
-                                                variant="top" 
-                                                src="https://cdn.pixabay.com/photo/2018/02/14/17/49/histogram-3153437_960_720.png" 
-                                                style={{'height': '15vh'}}
-                                            />
-                                            <Card.Body>
-                                                <Card.Title>Card Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                                <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col md={4} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
-                                        <Card className="Card">
-                                            <Card.Img 
-                                                variant="top" 
-                                                src="https://cdn.pixabay.com/photo/2018/02/14/17/49/histogram-3153437_960_720.png" 
-                                                style={{'height': '15vh'}}
-                                            />
-                                            <Card.Body>
-                                                <Card.Title>Card Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                                <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
+                                    ))
+                                }
                                 </Row>
                                 <br/>
-                                <Row>
-                                    <Col md={4} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
-                                        <Card>
-                                            <Card.Img 
-                                                variant="top" 
-                                                src="https://cdn.pixabay.com/photo/2018/02/14/17/49/histogram-3153437_960_720.png" 
-                                                style={{'height': '15vh'}}
-                                            />
-                                            <Card.Body>
-                                                <Card.Title>Card Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                                <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col md={4} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
-                                        <Card>
-                                            <Card.Img 
-                                                variant="top" 
-                                                src="https://cdn.pixabay.com/photo/2018/02/14/17/49/histogram-3153437_960_720.png" 
-                                                style={{'height': '15vh'}}
-                                            />
-                                            <Card.Body>
-                                                <Card.Title>Card Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                                <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col md={4} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
-                                        <Card>
-                                            <Card.Img 
-                                                variant="top" 
-                                                src="https://cdn.pixabay.com/photo/2018/02/14/17/49/histogram-3153437_960_720.png" 
-                                                style={{'height': '15vh'}}
-                                            />
-                                            <Card.Body>
-                                                <Card.Title>Card Title</Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                                <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                </Row>
                                 <br/>
                                 <div align="center">
                                     <ButtonGroup aria-label="Basic example">

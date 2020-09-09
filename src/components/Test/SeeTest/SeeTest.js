@@ -43,15 +43,12 @@ class SeeTest extends Component{
     };
 
     getTestData = (pageNo) => {
-        console.log('gtd');
-
-        // this.state.loading = false;
         const token = window.sessionStorage.getItem('token');
 		const headers = {
 			'Content-Type': 'application/json',
 			'Authorization': token
 		}
-		const tokenData = this.parseJwt(token);
+		// const tokenData = this.parseJwt(token);
 		// alert(JSON.stringify(tokenData));
 
 		const url = 'http://localhost:5000/edu/v1/tests/get-test?testid=all&pageno=' + pageNo
