@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { FaCalendarAlt, FaGooglePlus, FaRegTrashAlt } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import Spinner from '../Spinner/Spinner';
 import { toast } from 'react-toastify';
 import Navibar from '../Navibar/Navibar'
@@ -26,6 +27,9 @@ class RoomUI extends Component{
         next: 0,
         roomData: [],
         testData: [],
+        accountType: '',
+        accountTeacher: false,
+        accountStudent: false,
     }
 
     notify = (notify_type, notify_msg) => {
@@ -61,15 +65,28 @@ class RoomUI extends Component{
           }, 1000);
     }
 
+    getUrlParams = () => {
+        const vars = {};
+        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+        function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
     getTestData = (pageNo) => {
         const token = window.sessionStorage.getItem('token');
 		const headers = {
 			'Content-Type': 'application/json',
 			'Authorization': token
-		}
+        }
+        const urlParams = this.getUrlParams();
+        const roomName = urlParams["room_name"];
+
         const baseUrl = 'http://localhost:5000/edu/v1/tests/get-test?testid=all&pageno=' + pageNo
-        const params = '&cols=id,details,schedule,duration'
-        const url = baseUrl + params
+        const params1 = '&room_name=' + roomName;
+        const params2 = '&cols=id,details,schedule,duration'
+        const url = baseUrl + params1 + params2
 
 		axios.get(url, {headers: headers})
 		.then(response =>{
@@ -107,11 +124,21 @@ class RoomUI extends Component{
     componentDidMount() {
 		setTimeout(() => {
 			this.setState({loading: false})
-            this.setState({showHome:true})
+            this.setState({showHome: true})
             const token = window.sessionStorage.getItem('token');
             const tokenData = this.parseJwt(token)
             const user_id = tokenData['_id']
-            this.setState({teacherId:user_id})
+            this.setState({teacherId: user_id})
+            const accountType = tokenData['account_type'];
+
+            // if(accountType == 'teacher'){
+            //     this.setState({accountTeacher: true});
+            // }
+            // else if(accountType == 'student'){
+            //     this.setState({accountStudent: true});
+            // }
+            this.setState({accountStudent: true});
+            
             this.getTestData(1);
 		  }, 1000);
     }
@@ -134,6 +161,10 @@ class RoomUI extends Component{
                                     style={{'height': '20vh'}}
                                 />
                                 <ListGroup variant="flush">
+                                    <ListGroup.Item>Active Tests</ListGroup.Item>
+                                    <ListGroup.Item>Archived Tests</ListGroup.Item>
+                                    <ListGroup.Item>Deleted Tests</ListGroup.Item>
+                                    {/* <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
                                     <ListGroup.Item>Cras justo odio</ListGroup.Item>
                                     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
                                     <ListGroup.Item>Morbi leo risus</ListGroup.Item>
@@ -141,11 +172,7 @@ class RoomUI extends Component{
                                     <ListGroup.Item>Cras justo odio</ListGroup.Item>
                                     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
                                     <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                                    <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                                    <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                                    <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+                                    <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item> */}
                                 </ListGroup>
                             </Card>
                         </Col>
@@ -156,23 +183,40 @@ class RoomUI extends Component{
                                     <h3>Test's List:</h3>
                                     <hr className = "Line"/>
                                 </div>
+                                <div style={{height: ""}}>
                                 <Row>
                                 {
                                     Object.keys(this.state.testData).map((row) => (
-                                    <Col md={4} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
+                                    <Col md={3} style={{paddingLeft: '2vw', paddingRight: '2vw'}}>
                                         <Card className="Card">
-                                            <Card.Img 
+                                            {/* <Card.Img 
                                                 variant="top" 
                                                 src="https://cdn.pixabay.com/photo/2018/02/14/17/49/histogram-3153437_960_720.png" 
                                                 style={{'height': '15vh'}}
-                                            />
+                                            /> */}
+                                            <div align="center">
+                                                <FaChalkboardTeacher style={{"padding": "15px", "fontSize": "100px"}}/>
+                                            </div>
                                             <Card.Body>
                                                 <Card.Title>
                                                     Details: {this.state.testData[row]['details']}
                                                 </Card.Title>
-                                                <Card.Subtitle className="mb-2 text-muted">
-                                                    Id: {this.state.testData[row]['id']}
-                                                </Card.Subtitle>
+                                                {
+                                                    this.state.accountTeacher ?
+                                                        <Card.Subtitle className="mb-2 text-muted">
+                                                            Id: 
+                                                            <a href={"/#/test-get?testid="+this.state.testData[row]['id']}>
+                                                            {this.state.testData[row]['id'].slice(0, 29)}
+                                                            </a>
+                                                        </Card.Subtitle>
+                                                    :
+                                                    <Card.Subtitle className="mb-2 text-muted">
+                                                        Id: 
+                                                        <a href={"/#/test-attempt-create?testid="+this.state.testData[row]['id']}>
+                                                        {this.state.testData[row]['id'].slice(0, 29)}
+                                                        </a>
+                                                    </Card.Subtitle>
+                                                }
                                                 <Card.Text>
                                                     Duration: {this.state.testData[row]['duration']}
                                                 </Card.Text>
@@ -185,6 +229,7 @@ class RoomUI extends Component{
                                     ))
                                 }
                                 </Row>
+                                </div>
                                 <br/>
                                 <br/>
                                 <div align="center">

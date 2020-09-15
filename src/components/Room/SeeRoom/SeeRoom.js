@@ -217,15 +217,20 @@ class SeeRoom extends Component{
             console.log(event.target.dataItem.dataContext);
 
             const roomId = event.target.dataItem.dataContext.id;
-            console.log(roomId);
+            const roomName = event.target.dataItem.dataContext.name;
+            console.log(roomName);
 
-            if(roomId != undefined){
+            if(roomName != undefined && roomId != undefined){
                 const token = window.sessionStorage.getItem('token');
                 const tokenData = JSON.parse(atob(token.split('.')[1]));
                 const teacherId = tokenData['_id']
                 // const teacherId = this.state.teacherId;
-                const url = 'http://localhost:3000/#/room-get?room_id='+roomId+'&teacher_id='+teacherId;
+                const baseUrl = 'http://localhost:3000/#/room-get?'
+                const param1 = 'room_name='+roomName;
+                const param2 = '&room_id='+roomId;
+                const param3 = '&teacher_id='+teacherId;
                 // window.open(url, '_blank');
+                const url = baseUrl + param1 + param2 + param3;
                 window.location.href = url;
             }
         });
@@ -255,7 +260,7 @@ class SeeRoom extends Component{
                     this.state.loading? <Spinner/>:
                     <div>
                         <Navibar/>
-                        <Container>
+                        <Container fluid>
                             <Row>
                                 <Col md={12}>
                                     <br/>
@@ -267,7 +272,7 @@ class SeeRoom extends Component{
                                                 <h3>Room's List:</h3>
                                                 <hr className = "Line"/>
                                             </div>
-                                            <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+                                            <div id="chartdiv" style={{ width: "100%", height: "500px", transform: `scale(1.5, 1.5)`}}></div>
                                             <br/>
                                             <div>
                                                 <ButtonGroup aria-label="Basic example">

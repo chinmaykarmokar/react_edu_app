@@ -31,7 +31,9 @@ class SeeEnroll extends Component{
         previous: '',
         next: '',
         enrollData: [],
-        chartData: {},
+        chartData: {
+            "0": ["abc"]
+        },
         activeStepData: [],
         steps: [
             // {
@@ -217,7 +219,7 @@ class SeeEnroll extends Component{
                 this.state.loading? <Spinner/>:
                 <div>
                     <Navibar/>
-                    <Container>
+                    <Container fluid>
                         <Row>
                             <Col md={12}>
                                 <br/>

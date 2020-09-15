@@ -63,7 +63,7 @@ class Settings extends Component{
                 this.state.loading? <Spinner/>:
                 <div>
                     <Navibar/>
-                    <Container>
+                    <Container fluid>
                         <Row>
                             <Col md={12}>
                                 <br/>
@@ -76,7 +76,8 @@ class Settings extends Component{
                                         </div>
                                         <br/>
                                         <Row>
-                                            <Col md={6}>
+                                            <Col md={1}></Col>
+                                            <Col md={5}>
                                                 <Card className="Card">
                                                     <Card.Body>
                                                         <Card.Title>Theme:</Card.Title>
@@ -90,7 +91,7 @@ class Settings extends Component{
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
-                                            <Col md={6}>
+                                            <Col md={5}>
                                                 <Card className="Card">
                                                     <Card.Body>
                                                         <Card.Title>Theme:</Card.Title>
@@ -104,10 +105,12 @@ class Settings extends Component{
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
+                                            <Col md={1}></Col>
                                         </Row>
                                         <br/>
                                         <Row>
-                                            <Col md={6}>
+                                            <Col md={1}></Col>
+                                            <Col md={5}>
                                                 <Card className="Card">
                                                     <Card.Body>
                                                         <Card.Title>Theme:</Card.Title>
@@ -121,7 +124,7 @@ class Settings extends Component{
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
-                                            <Col md={6}>
+                                            <Col md={5}>
                                                 <Card className="Card">
                                                     <Card.Body>
                                                         <Card.Title>Theme:</Card.Title>
@@ -135,6 +138,7 @@ class Settings extends Component{
                                                     </Card.Body>
                                                 </Card>
                                             </Col>
+                                            <Col md={1}></Col>
                                         </Row>
                                     </Card.Body>
                                 </Card>

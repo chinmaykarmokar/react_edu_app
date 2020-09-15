@@ -185,7 +185,7 @@ class SeeContact extends Component{
                                             <h3>Contact's List:</h3>
                                             <hr className = "Line"/>
                                         </div>
-                                        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+                                        <div id="chartdiv" style={{ width: "100%", height: "500px", transform: `scale(1.5, 1.5)`}}></div>
                                         <br/>
                                         <div>
                                             <ButtonGroup aria-label="Basic example">

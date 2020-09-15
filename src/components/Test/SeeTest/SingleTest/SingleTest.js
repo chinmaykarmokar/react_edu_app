@@ -1,5 +1,6 @@
+// Import Modules:
+
 import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form';
 // import './Register.css';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
@@ -13,6 +14,11 @@ import { BsCloudDownload } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import './SingleTest.css'
 import Navibar from '../../../Navibar/Navibar'
+import { FaCalendarAlt, FaGooglePlus, FaRegTrashAlt } from "react-icons/fa";
+import { AiOutlineNumber } from "react-icons/ai";
+// import { BiDetail } from "react-icons/bi";
+
+// Component Definition:
 
 class SingleTest extends Component{
 
@@ -114,7 +120,7 @@ class SingleTest extends Component{
             this.state.loading ? <Spinner/> :
             <div>
                 <Navibar/>
-                <Container fluid="md">
+                <Container fluid>
                     <Card className="TestDetails">
                         <Row>
                             <Col md={1}></Col>
@@ -134,13 +140,33 @@ class SingleTest extends Component{
                             <Col md={1}></Col>
                             <Col md={5}>
                                 <Card className="TestDetails">
-                                    <Card.Body>Test Id: {this.state.test_id}</Card.Body>
-                                    <Card.Body>Details: {this.state.details}</Card.Body>
-                                    <Card.Body>Schedule: {this.state.schedule}</Card.Body>
-                                    <Card.Body>Duration: {this.state.duration}</Card.Body>
-                                    <Card.Body>Start Time: {this.state.start_time}</Card.Body>
-                                    <Card.Body>End Time: {this.state.end_time}</Card.Body>
-                                    <Card.Body>No of Mandatory Questions: {this.state.no_mandatory_questions}</Card.Body>
+                                    <Card.Body>
+                                        <AiOutlineNumber/>
+                                        Test Id: {this.state.test_id}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        {/* <BiDetail/> */}
+                                        Details: {this.state.details}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        
+                                        Schedule: {this.state.schedule}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        
+                                        Duration: {this.state.duration}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        
+                                        Start Time: {this.state.start_time}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        
+                                        End Time: {this.state.end_time}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        
+                                        No of Mandatory Questions: {this.state.no_mandatory_questions}</Card.Body>
                                     {/* <Card.Body>qna: response['data']['test_data']['qna']</Card.Body> */}
                                 </Card>
                             </Col>

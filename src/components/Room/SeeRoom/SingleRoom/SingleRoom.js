@@ -58,9 +58,9 @@ class SingleRoom extends Component{
 		const token = window.sessionStorage.getItem('token');
 		const tokenData = this.parseJwt(token);
         const urlParams = this.getUrlParams();
-        const roomId = urlParams["room_id"];
+        const roomName = urlParams["room_name"];
         const teacherId = urlParams["teacher_id"];
-		const url = 'http://localhost:3000/#/roomui-get?room_id='+roomId+'&teacher_id='+teacherId;
+		const url = 'http://localhost:3000/#/roomui-get?room_name='+roomName+'&teacher_id='+teacherId;
 		// window.open(url, '_blank');
 		window.location.href = url;
     }
@@ -111,7 +111,7 @@ class SingleRoom extends Component{
 				this.state.loading ? <Spinner/>:
 				<div>
 					<Navibar/>
-					<Container fluid='md'>
+					<Container fluid>
 						
 						<br/>
 						<Card className="RoomDetails">
@@ -126,8 +126,8 @@ class SingleRoom extends Component{
 							</Row>
 							{/*<br/>*/}
 							<Row>
-								<Col md={3}></Col>
-								<Col md={6}>
+								<Col md={4}></Col>
+								<Col md={4}>
 									<br/>
 									<Card className="RoomDetails">
 										<Card.Img 
@@ -157,7 +157,7 @@ class SingleRoom extends Component{
 									</Button>
 									<br/>
 								</Col>
-								<Col md={3}></Col>
+								<Col md={4}></Col>
 							</Row>
 							<br/>
 						</Card>

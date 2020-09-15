@@ -31,6 +31,7 @@ class CreateTest extends Component{
         qna: [],
         qna_dictionary: {},
         duration: 0,
+        roomName: '',
         showTestDetails: false,
         showTestQuestions: false,
         steps: [
@@ -151,7 +152,8 @@ class CreateTest extends Component{
             "start_time": this.state.startTime,
             "end_time": this.state.endTime,
             "qna": this.state.qna,
-            "duration": parseFloat(this.state.duration)
+            "duration": parseFloat(this.state.duration),
+            "room_name": this.state.roomName
         })
 
         console.log(postData);
@@ -242,13 +244,12 @@ class CreateTest extends Component{
                                                 <br/>
                                                 <div>
                                                     <Form.Group controlId="formBasicEmail">
-                                                        <Form.Label >Customer Id</Form.Label>
+                                                        <Form.Label >Room Name</Form.Label>
                                                         <Form.Control
                                                             type="text" 
-                                                            placeholder="Enter Customer Id" 
+                                                            placeholder="Enter Room Name" 
                                                             className = "Field" 
-                                                            value={this.state.customerId} 
-                                                            onChange={(event) => this.setState({customerId: event.target.value})}  
+                                                            onChange={(event) => this.setState({roomName: event.target.value})}  
                                                         />
                                                     </Form.Group>
                                                 </div>
